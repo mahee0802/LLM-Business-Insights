@@ -18,8 +18,5 @@ venv/
 # Logs
 *.log
 
-# Processed data
-data/processed/
-
 # Secrets
 .env
