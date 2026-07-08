@@ -1,0 +1,321 @@
+{
+    "revenue": {
+        "total_revenue": 16643731.3,
+        "average_order_value": 167.37,
+        "monthly_revenue": {
+            "2016-09": 354.75,
+            "2016-10": 58730.85,
+            "2016-12": 19.62,
+            "2017-01": 148030.11,
+            "2017-02": 303648.31,
+            "2017-03": 459778.64,
+            "2017-04": 449707.81,
+            "2017-05": 634762.22,
+            "2017-06": 531052.06,
+            "2017-07": 631341.57,
+            "2017-08": 706168.95,
+            "2017-09": 767325.7,
+            "2017-10": 808911.33,
+            "2017-11": 1232074.3,
+            "2017-12": 898427.92,
+            "2018-01": 1158742.84,
+            "2018-02": 1039011.65,
+            "2018-03": 1209080.3,
+            "2018-04": 1201102.21,
+            "2018-05": 1193204.98,
+            "2018-06": 1075753.44,
+            "2018-07": 1097939.54,
+            "2018-08": 1038395.74,
+            "2018-09": 166.46,
+            "2018-10": 0.0
+        },
+        "revenue_by_category": {
+            "health_beauty": 1491397.76,
+            "watches_gifts": 1358845.59,
+            "bed_bath_table": 1327662.02,
+            "sports_leisure": 1205197.85,
+            "computers_accessories": 1104362.03,
+            "furniture_decor": 955367.22,
+            "housewares": 823623.5,
+            "cool_stuff": 752702.21,
+            "auto": 714431.95,
+            "garden_tools": 625387.31,
+            "toys": 582218.11,
+            "baby": 506539.48,
+            "perfumery": 471766.76,
+            "telephony": 413871.98,
+            "office_furniture": 359171.62,
+            "stationery": 288342.44,
+            "pet_shop": 264442.62,
+            "computers": 253374.41,
+            "musical_instruments": 230579.09,
+            "Unknown": 228805.96,
+            "small_appliances": 218726.3,
+            "electronics": 214862.55,
+            "fashion_bags_accessories": 197052.25,
+            "consoles_games": 187551.16,
+            "luggage_accessories": 180577.27,
+            "construction_tools_construction": 169812.63,
+            "home_appliances_2": 135945.04,
+            "home_construction": 102212.32,
+            "home_appliances": 101179.43,
+            "furniture_living_room": 92597.42,
+            "agro_industry_and_commerce": 90808.77,
+            "home_confort": 73962.78,
+            "fixed_telephony": 66526.2,
+            "air_conditioning": 62810.88,
+            "kitchen_dining_laundry_garden_furniture": 61333.19,
+            "audio": 58494.16,
+            "books_general_interest": 57627.88,
+            "small_appliances_home_oven_and_coffee": 51830.37,
+            "construction_tools_lights": 49728.76,
+            "industry_commerce_and_business": 48109.56,
+            "construction_tools_safety": 45966.24,
+            "food": 37649.99,
+            "market_place": 35188.63,
+            "costruction_tools_garden": 31756.96,
+            "fashion_shoes": 30053.82,
+            "art": 28912.99,
+            "drinks": 28846.34,
+            "signaling_and_security": 28120.83,
+            "furniture_bedroom": 27742.36,
+            "books_technical": 23685.32,
+            "food_drink": 21230.81,
+            "costruction_tools_tools": 18155.42,
+            "fashion_male_clothing": 13974.21,
+            "fashion_underwear_beach": 12419.06,
+            "christmas_supplies": 12079.84,
+            "tablets_printing_image": 9140.68,
+            "cine_photo": 8232.24,
+            "dvds_blu_ray": 7889.99,
+            "music": 6973.59,
+            "furniture_mattress_and_upholstery": 6548.53,
+            "books_imported": 5661.13,
+            "party_supplies": 5636.43,
+            "fashio_female_clothing": 3535.84,
+            "fashion_sport": 2736.73,
+            "la_cuisine": 2690.87,
+            "arts_and_craftmanship": 2184.14,
+            "diapers_and_hygiene": 2141.27,
+            "flowers": 1598.91,
+            "home_comfort_2": 1194.44,
+            "cds_dvds_musicals": 954.99,
+            "fashion_childrens_clothes": 665.36,
+            "security_and_services": 324.51
+        }
+    },
+    "customers": {
+        "total_customers": 96096,
+        "repeat_customers": 2997,
+        "customers_by_state": {
+            "SP": 40302,
+            "RJ": 12384,
+            "MG": 11259,
+            "RS": 5277,
+            "PR": 4882,
+            "SC": 3534,
+            "BA": 3277,
+            "DF": 2075,
+            "ES": 1964,
+            "GO": 1952,
+            "PE": 1609,
+            "CE": 1313,
+            "PA": 949,
+            "MT": 876,
+            "MA": 726,
+            "MS": 694,
+            "PB": 519,
+            "PI": 482,
+            "RN": 474,
+            "AL": 401,
+            "SE": 342,
+            "TO": 273,
+            "RO": 240,
+            "AM": 143,
+            "AC": 77,
+            "AP": 67,
+            "RR": 45
+        },
+        "average_orders_per_customer": 1.03
+    },
+    "orders": {
+        "total_orders": 99441,
+        "order_status_distribution": {
+            "delivered": 96478,
+            "shipped": 1107,
+            "canceled": 625,
+            "unavailable": 609,
+            "invoiced": 314,
+            "processing": 301,
+            "created": 5,
+            "approved": 2
+        },
+        "average_delivery_time_days": 12.02,
+        "delayed_orders": 7821,
+        "delayed_order_percentage": 7.86
+    },
+    "products": {
+        "top_selling_categories": {
+            "bed_bath_table": 11988,
+            "health_beauty": 10032,
+            "sports_leisure": 9004,
+            "furniture_decor": 8832,
+            "computers_accessories": 8150,
+            "housewares": 7380,
+            "watches_gifts": 6213,
+            "telephony": 4726,
+            "garden_tools": 4590,
+            "auto": 4400
+        },
+        "revenue_by_category": {
+            "health_beauty": 1491397.76,
+            "watches_gifts": 1358845.59,
+            "bed_bath_table": 1327662.02,
+            "sports_leisure": 1205197.85,
+            "computers_accessories": 1104362.03,
+            "furniture_decor": 955367.22,
+            "housewares": 823623.5,
+            "cool_stuff": 752702.21,
+            "auto": 714431.95,
+            "garden_tools": 625387.31
+        },
+        "average_product_price": 120.65
+    },
+    "payments": {
+        "payment_method_distribution": {
+            "credit_card": 76505,
+            "boleto": 19784,
+            "voucher": 3866,
+            "debit_card": 1528,
+            "not_defined": 3
+        },
+        "average_payment_value": 172.74,
+        "average_installments": 2.94
+    },
+    "reviews": {
+        "average_review_rating": 4.02,
+        "rating_distribution": {
+            "1.0": 15428,
+            "2.0": 4162,
+            "3.0": 9894,
+            "4.0": 22319,
+            "5.0": 66343
+        },
+        "best_rated_categories": {
+            "cds_dvds_musicals": 4.64,
+            "fashion_childrens_clothes": 4.5,
+            "books_general_interest": 4.44,
+            "books_imported": 4.42,
+            "flowers": 4.42,
+            "costruction_tools_tools": 4.42,
+            "books_technical": 4.38,
+            "food_drink": 4.32,
+            "small_appliances_home_oven_and_coffee": 4.32,
+            "luggage_accessories": 4.3
+        },
+        "worst_rated_categories": {
+            "security_and_services": 2.5,
+            "Unknown": 3.16,
+            "diapers_and_hygiene": 3.26,
+            "office_furniture": 3.53,
+            "fashion_male_clothing": 3.55,
+            "home_comfort_2": 3.64,
+            "fixed_telephony": 3.67,
+            "fashio_female_clothing": 3.78,
+            "furniture_mattress_and_upholstery": 3.8,
+            "audio": 3.84
+        }
+    },
+    "geography": {
+        "revenue_by_state": {
+            "SP": 6234533.82,
+            "RJ": 2247128.32,
+            "MG": 1928571.09,
+            "RS": 934286.75,
+            "PR": 832059.4,
+            "BA": 650220.38,
+            "SC": 632514.14,
+            "GO": 368997.61,
+            "DF": 367750.15,
+            "ES": 336438.54
+        },
+        "orders_by_state": {
+            "SP": 41746,
+            "RJ": 12852,
+            "MG": 11635,
+            "RS": 5466,
+            "PR": 5045,
+            "SC": 3637,
+            "BA": 3380,
+            "DF": 2140,
+            "ES": 2033,
+            "GO": 2020
+        },
+        "customers_by_state": {
+            "SP": 40302,
+            "RJ": 12384,
+            "MG": 11259,
+            "RS": 5277,
+            "PR": 4882,
+            "SC": 3534,
+            "BA": 3277,
+            "DF": 2075,
+            "ES": 1964,
+            "GO": 1952
+        }
+    },
+    "sellers": {
+        "top_sellers_by_revenue": [
+            {
+                "seller_id": "53243585a1d6dc2643021fd1853d8905",
+                "seller_state": "BA",
+                "total_order_item_value": 258882.28
+            },
+            {
+                "seller_id": "4869f7a5dfa277a7dca6462dcf3b52b2",
+                "seller_state": "SP",
+                "total_order_item_value": 258625.52
+            },
+            {
+                "seller_id": "7c67e1448b00f6e969d365cea6b010ab",
+                "seller_state": "SP",
+                "total_order_item_value": 254387.7
+            },
+            {
+                "seller_id": "4a3ca9315b744ce9f8e9374361493884",
+                "seller_state": "SP",
+                "total_order_item_value": 253535.64
+            },
+            {
+                "seller_id": "fa1c13f2614d7b5c4749cbc52fecda94",
+                "seller_state": "SP",
+                "total_order_item_value": 214454.82
+            },
+            {
+                "seller_id": "da8622b14eb17ae2831f4ac5b9dab84a",
+                "seller_state": "SP",
+                "total_order_item_value": 198621.24
+            },
+            {
+                "seller_id": "7e93a43ef30c4f03f38b393420bc753a",
+                "seller_state": "SP",
+                "total_order_item_value": 189475.9
+            },
+            {
+                "seller_id": "1025f0e2d44d7041d6cf58b6550e0bfa",
+                "seller_state": "SP",
+                "total_order_item_value": 178696.05
+            },
+            {
+                "seller_id": "7a67c85e85bb2ce8582c35f2203ad736",
+                "seller_state": "SP",
+                "total_order_item_value": 172887.23
+            },
+            {
+                "seller_id": "955fee9216a65b617aa5c0531780ce60",
+                "seller_state": "SP",
+                "total_order_item_value": 163275.71
+            }
+        ]
+    }
+}
