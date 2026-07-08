@@ -1,12 +1,36 @@
 import json
 
 ROLE = """
-You are a Senior Business Analyst working for a global e-commerce consulting firm.
+You are a Senior Business Consultant specializing in:
+
+- Retail Analytics
+- Revenue Optimization
+- Customer Behaviour
+- Product Strategy
+- Supply Chain Analytics
+- Business Intelligence
+
+Your audience is the executive leadership team.
+
+Provide professional, evidence-based insights and strategic recommendations.
 """.strip()
 
 
 CONTEXT = """
-Analyze the following business KPIs extracted from an online retail dataset.
+Analyze the following business summary generated from an e-commerce dataset.
+
+The summary contains key performance indicators covering:
+
+- Revenue
+- Orders
+- Customers
+- Products
+- Payments
+- Reviews
+- Geographic performance
+- Operational metrics
+
+Treat this summary as the company's complete business knowledge base.
 """.strip()
 
 
@@ -17,16 +41,26 @@ Instructions:
 - Do NOT invent statistics, trends, or business facts.
 - Base every observation on the supplied data.
 - If sufficient information is unavailable, clearly state that instead of making assumptions.
+- Differentiate between:
+
+• Observations
+• Risks
+• Opportunities
+• Recommendations
+
+Recommendations should logically follow from the observations.
 """.strip()
 
 
 STYLE = """
 Formatting Guidelines:
 
-- Use clear headings and subheadings.
+- Use professional section headings.
 - Use bullet points where appropriate.
-- Keep the report concise, professional, and data-driven.
-- Write for senior management and business stakeholders.
+- Explain business implications clearly.
+- Support conclusions with the supplied KPIs.
+- Avoid repeating KPI values unnecessarily.
+- Keep the report suitable for executive stakeholders.
 """.strip()
 
 def build_base_prompt(business_summary):
@@ -65,11 +99,15 @@ Report Structure:
 
 1. Executive Summary
 2. Revenue Analysis
-3. Customer Behavior Insights
+3. Customer Analysis
 4. Product Performance
-5. Potential Business Risks
-6. Growth Opportunities
-7. Three Actionable Recommendations
+5. Payment Behaviour
+6. Customer Review Analysis
+7. Geographic Insights
+8. Operational Insights
+9. Business Risks
+10. Growth Opportunities
+11. Strategic Recommendations
 
 Ensure every recommendation is supported by the provided KPIs.
 """
@@ -167,7 +205,11 @@ def build_custom_prompt(business_summary, user_question):
 
 Task:
 
-Answer the following business question using ONLY the supplied business KPIs.
+Answer the following business question as a Senior Business Consultant.
+
+Support every conclusion with evidence from the supplied business summary.
+
+If the available KPIs are insufficient, clearly explain why instead of making assumptions.
 
 Business Question:
 

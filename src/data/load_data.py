@@ -1,5 +1,5 @@
 import json
-def load_business_summary(file_path="outputs/business_summary.json"):
+def load_business_summary(file_path="data/processed/business_summary.json"):
     """
     Load the business summary JSON file.
     """
