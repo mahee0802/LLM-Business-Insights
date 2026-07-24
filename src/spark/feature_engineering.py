@@ -1,4 +1,5 @@
-from pyspark.sql.functions import (col,year,month,quarter,dayofmonth,date_format,datediff,round,when,lit)
+from pyspark.sql.functions import (col,year,month,quarter,dayofmonth,date_format,datediff,round as spark_round,when,lit)
+from pyspark.sql.functions import coalesce, lit
 def create_features(df):
     df = df.withColumn("purchase_year",year(col("order_purchase_timestamp")))
     df = df.withColumn("purchase_month",month(col("order_purchase_timestamp")))
@@ -24,9 +25,9 @@ def create_features(df):
 )
     df = df.withColumn(
     "total_order_item_value",
-    round(
-        col("price") +
-        col("freight_value"),
+    spark_round(
+        coalesce(col("price"), lit(0)) +
+        coalesce(col("freight_value"), lit(0)),
         2
     )
 )
