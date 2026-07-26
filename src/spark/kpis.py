@@ -174,26 +174,7 @@ def product_kpis(df):
         row["product_category_name_english"]: int(row["items_sold"])
         for row in top_categories.collect()
     }
-
-    # KPI 2 : Revenue by Category
-    category_revenue = (
-        df.groupBy("product_category_name_english")
-        .agg(
-            spark_round(
-                sum("total_order_item_value"),
-                2
-            ).alias("revenue")
-        )
-        .orderBy(desc("revenue"))
-        .limit(10)
-    )
-
-    products["revenue_by_category"] = {
-        row["product_category_name_english"]: float(row["revenue"])
-        for row in category_revenue.collect()
-    }
-
-    # KPI 3 : Average Product Price
+    # KPI 2 : Average Product Price
     avg_price = (
         df.agg(
             avg("price").alias("avg_price")

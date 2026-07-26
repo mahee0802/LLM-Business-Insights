@@ -150,9 +150,9 @@
             "created": 5,
             "approved": 2
         },
-        "average_delivery_time_days": 12.02,
-        "delayed_orders": 7821,
-        "delayed_order_percentage": 7.86
+        "average_delivery_time_days": 12.43,
+        "delayed_orders": 6535,
+        "delayed_order_percentage": 6.57
     },
     "products": {
         "top_selling_categories": {
@@ -187,7 +187,8 @@
             "boleto": 19784,
             "voucher": 3866,
             "debit_card": 1528,
-            "not_defined": 3
+            "not_defined": 3,
+            "null": 1
         },
         "average_payment_value": 172.74,
         "average_installments": 2.94
@@ -195,22 +196,22 @@
     "reviews": {
         "average_review_rating": 4.02,
         "rating_distribution": {
-            "1.0": 15428,
-            "2.0": 4162,
-            "3.0": 9894,
-            "4.0": 22319,
-            "5.0": 66343
+            "1": 15428,
+            "2": 4162,
+            "3": 9894,
+            "4": 22319,
+            "5": 66343
         },
         "best_rated_categories": {
             "cds_dvds_musicals": 4.64,
             "fashion_childrens_clothes": 4.5,
             "books_general_interest": 4.44,
-            "books_imported": 4.42,
             "flowers": 4.42,
             "costruction_tools_tools": 4.42,
+            "books_imported": 4.42,
             "books_technical": 4.38,
-            "food_drink": 4.32,
             "small_appliances_home_oven_and_coffee": 4.32,
+            "food_drink": 4.32,
             "luggage_accessories": 4.3
         },
         "worst_rated_categories": {
@@ -269,52 +270,52 @@
             {
                 "seller_id": "53243585a1d6dc2643021fd1853d8905",
                 "seller_state": "BA",
-                "total_order_item_value": 258882.28
+                "revenue": 258882.28
             },
             {
                 "seller_id": "4869f7a5dfa277a7dca6462dcf3b52b2",
                 "seller_state": "SP",
-                "total_order_item_value": 258625.52
+                "revenue": 258625.52
             },
             {
                 "seller_id": "7c67e1448b00f6e969d365cea6b010ab",
                 "seller_state": "SP",
-                "total_order_item_value": 254387.7
+                "revenue": 254387.7
             },
             {
                 "seller_id": "4a3ca9315b744ce9f8e9374361493884",
                 "seller_state": "SP",
-                "total_order_item_value": 253535.64
+                "revenue": 253535.64
             },
             {
                 "seller_id": "fa1c13f2614d7b5c4749cbc52fecda94",
                 "seller_state": "SP",
-                "total_order_item_value": 214454.82
+                "revenue": 214454.82
             },
             {
                 "seller_id": "da8622b14eb17ae2831f4ac5b9dab84a",
                 "seller_state": "SP",
-                "total_order_item_value": 198621.24
+                "revenue": 198621.24
             },
             {
                 "seller_id": "7e93a43ef30c4f03f38b393420bc753a",
                 "seller_state": "SP",
-                "total_order_item_value": 189475.9
+                "revenue": 189475.9
             },
             {
                 "seller_id": "1025f0e2d44d7041d6cf58b6550e0bfa",
                 "seller_state": "SP",
-                "total_order_item_value": 178696.05
+                "revenue": 178696.05
             },
             {
                 "seller_id": "7a67c85e85bb2ce8582c35f2203ad736",
                 "seller_state": "SP",
-                "total_order_item_value": 172887.23
+                "revenue": 172887.23
             },
             {
                 "seller_id": "955fee9216a65b617aa5c0531780ce60",
                 "seller_state": "SP",
-                "total_order_item_value": 163275.71
+                "revenue": 163275.71
             }
         ]
     }

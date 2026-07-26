@@ -39,10 +39,14 @@ def load_payments():
     )
     return payments
 def load_reviews():
-    reviews = spark.read.csv(
-        str(RAW_DATA / "olist_order_reviews_dataset.csv"),
-        header=True,
-        inferSchema=True
+    reviews = (
+        spark.read
+        .option("header", True)
+        .option("inferSchema", True)
+        .option("multiLine", True)
+        .option("quote", '"')
+        .option("escape", '"')
+        .csv(str(RAW_DATA / "olist_order_reviews_dataset.csv"))
     )
     return reviews
 def load_sellers():
