@@ -44,6 +44,23 @@ def load_data():
         sellers,
         translation
     )
+def aggregate_to_order_grain(payments, reviews):
+    payments_agg = (
+        payments.sort_values("payment_value", ascending=False)
+        .groupby("order_id", as_index=False)
+        .agg(
+            payment_type=("payment_type", "first"),
+            payment_installments=("payment_installments", "max"),
+            payment_value=("payment_value", "sum"),
+        )
+    )
+
+    reviews_dedup = (
+        reviews.sort_values("review_answer_timestamp")
+        .drop_duplicates(subset="order_id", keep="last")
+    )
+
+    return payments_agg, reviews_dedup
 def merge_datasets(
     orders,
     customers,
@@ -59,6 +76,7 @@ def merge_datasets(
     """
 
     print("\nStarting dataset merges...\n")
+    payments, reviews = aggregate_to_order_grain(payments, reviews)
 
     # Merge Orders + Customers
     business_df = orders.merge(
