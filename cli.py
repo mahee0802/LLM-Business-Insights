@@ -1,4 +1,4 @@
-from src.data.load_data import load_business_summary
+from src.utils.summary_loader import load_business_summary
 from src.llm.prompts import (
     build_business_report_prompt,
     build_revenue_prompt,

@@ -1,39 +1,39 @@
-import pandas as pd
 import pytest
+from pyspark.sql import SparkSession
 
-from src.analysis.generate_kpis import (
-    order_kpis,
-    payment_kpis,
-    review_kpis,
-    revenue_kpis,
-)
-from src.data.build_business_dataset import aggregate_to_order_grain
+from src.spark.joins import aggregate_to_order_grain
+from src.spark.kpis import order_kpis, payment_kpis, revenue_kpis, review_kpis
+
+
+@pytest.fixture(scope="session")
+def spark():
+    s = SparkSession.builder.master("local[1]").appName("tests").getOrCreate()
+    s.conf.set("spark.sql.shuffle.partitions", "1")
+    yield s
 
 
 @pytest.fixture
-def items_df():
+def items_df(spark):
     """
-    Item-level table (one row per order item), as in business_master.csv.
+    Item-level table (one row per order item), as produced by the pipeline.
       o1: 2 items (100 + 50), rated 5, paid 150, delivered in 5 days, on time
       o2: 1 item (200), rated 1, paid 200, delivered in 10 days, 3 days late
-      o3: no items (NaN value), rated 4, paid 100
+      o3: no items, rated 4, paid 100
     """
-    return pd.DataFrame({
-        "order_id": ["o1", "o1", "o2", "o3"],
-        "order_status": ["delivered", "delivered", "delivered", "canceled"],
-        "purchase_year_month": ["2017-01", "2017-01", "2017-02", "2017-02"],
-        "product_category_name_english": ["toys", "toys", "books", None],
-        "order_item_id": [1, 2, 1, None],
-        "price": [90.0, 45.0, 180.0, None],
-        "total_order_item_value": [100.0, 50.0, 200.0, None],
-        "delivery_time_days": [5.0, 5.0, 10.0, None],
-        "delivery_delay_days": [-2.0, -2.0, 3.0, None],
-        "payment_type": ["credit_card", "credit_card", "boleto", "voucher"],
-        "payment_installments": [3.0, 3.0, 1.0, 1.0],
-        "payment_value": [150.0, 150.0, 200.0, 100.0],
-        "review_id": ["r1", "r1", "r2", "r3"],
-        "review_score": [5.0, 5.0, 1.0, 4.0],
-    })
+    schema = (
+        "order_id string, order_status string, purchase_year_month string, "
+        "product_category_name_english string, order_item_id int, "
+        "total_order_item_value double, delivery_time_days int, "
+        "delivery_delay_days int, payment_type string, payment_installments int, "
+        "payment_value double, review_id string, review_score int"
+    )
+    rows = [
+        ("o1", "delivered", "2017-01", "toys", 1, 100.0, 5, -2, "credit_card", 3, 150.0, "r1", 5),
+        ("o1", "delivered", "2017-01", "toys", 2, 50.0, 5, -2, "credit_card", 3, 150.0, "r1", 5),
+        ("o2", "delivered", "2017-02", "books", 1, 200.0, 10, 3, "boleto", 1, 200.0, "r2", 1),
+        ("o3", "canceled", "2017-02", None, None, 0.0, None, None, "voucher", 1, 100.0, "r3", 4),
+    ]
+    return spark.createDataFrame(rows, schema)
 
 
 def test_total_revenue_and_aov(items_df):
@@ -64,51 +64,39 @@ def test_payment_kpis_are_order_level(items_df):
     assert result["average_installments"] == 1.67
 
 
-def test_aggregate_to_order_grain():
-    payments = pd.DataFrame({
-        "order_id": ["o1", "o1", "o2"],
-        "payment_type": ["credit_card", "voucher", "boleto"],
-        "payment_installments": [3, 1, 1],
-        "payment_value": [100.0, 50.0, 200.0],
-    })
-    reviews = pd.DataFrame({
-        "order_id": ["o1", "o1", "o2"],
-        "review_id": ["r_old", "r_new", "r2"],
-        "review_score": [1, 5, 4],
-        "review_answer_timestamp": pd.to_datetime(
-            ["2017-01-01", "2017-01-05", "2017-02-01"]
-        ),
-    })
-
-    pay_agg, rev_dedup = aggregate_to_order_grain(payments, reviews)
-
-    assert pay_agg["order_id"].is_unique
-    assert rev_dedup["order_id"].is_unique
-    row = pay_agg.set_index("order_id").loc["o1"]
-    assert row["payment_value"] == 150.0
-    assert row["payment_type"] == "credit_card"  # the largest payment
-    assert rev_dedup.set_index("order_id").loc["o1", "review_id"] == "r_new"
-
-
-def test_join_does_not_duplicate_items():
-    items = pd.DataFrame({"order_id": ["o1", "o1", "o2"], "price": [10, 20, 30]})
-    payments = pd.DataFrame({
-        "order_id": ["o1", "o1", "o2"],
-        "payment_type": ["credit_card", "voucher", "boleto"],
-        "payment_installments": [1, 1, 1],
-        "payment_value": [20.0, 10.0, 30.0],
-    })
-    reviews = pd.DataFrame({
-        "order_id": ["o1", "o2"],
-        "review_id": ["r1", "r2"],
-        "review_score": [5, 4],
-        "review_answer_timestamp": pd.to_datetime(["2017-01-01", "2017-01-02"]),
-    })
-
-    pay_agg, rev_dedup = aggregate_to_order_grain(payments, reviews)
-    merged = items.merge(pay_agg, on="order_id", how="left").merge(
-        rev_dedup, on="order_id", how="left"
+def test_aggregate_to_order_grain_and_no_fanout(spark):
+    items = spark.createDataFrame(
+        [("o1", 10.0), ("o1", 20.0), ("o2", 30.0)],
+        "order_id string, price double",
+    )
+    payments = spark.createDataFrame(
+        [
+            ("o1", "credit_card", 3, 100.0),
+            ("o1", "voucher", 1, 50.0),
+            ("o2", "boleto", 1, 200.0),
+        ],
+        "order_id string, payment_type string, payment_installments int, payment_value double",
+    )
+    reviews = spark.createDataFrame(
+        [
+            ("o1", "r_old", 1, "2017-01-01 00:00:00"),
+            ("o1", "r_new", 5, "2017-01-05 00:00:00"),
+            ("o2", "r2", 4, "2017-02-01 00:00:00"),
+        ],
+        "order_id string, review_id string, review_score int, review_answer_timestamp string",
     )
 
-    assert len(merged) == len(items)  # no fan-out
-    assert merged["price"].sum() == items["price"].sum()
+    pay_agg, rev_dedup = aggregate_to_order_grain(payments, reviews)
+
+    # one row per order after aggregation
+    assert pay_agg.count() == 2
+    assert rev_dedup.count() == 2
+
+    o1 = pay_agg.filter("order_id = 'o1'").first()
+    assert o1["payment_value"] == 150.0
+    assert o1["payment_type"] == "credit_card"  # the largest payment
+    assert rev_dedup.filter("order_id = 'o1'").first()["review_id"] == "r_new"  # latest review
+
+    # joining back onto items must not duplicate item rows
+    merged = items.join(pay_agg, "order_id", "left").join(rev_dedup, "order_id", "left")
+    assert merged.count() == items.count()

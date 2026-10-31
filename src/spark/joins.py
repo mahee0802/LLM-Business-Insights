@@ -1,3 +1,5 @@
+from pyspark.sql import functions as F
+from pyspark.sql.window import Window
 from src.spark.load_data import (
     load_orders,
     load_customers,
@@ -8,6 +10,30 @@ from src.spark.load_data import (
     load_sellers,
     load_translation
 )
+def aggregate_to_order_grain(payments, reviews):
+    """Collapse payments and reviews to one row per order_id before joining."""
+    w_pay = Window.partitionBy("order_id").orderBy(F.col("payment_value").desc())
+    top_payment = (
+        payments.withColumn("rn", F.row_number().over(w_pay))
+        .filter("rn = 1")
+        .select("order_id", "payment_type")
+    )
+    payments_agg = (
+        payments.groupBy("order_id")
+        .agg(
+            F.max("payment_installments").alias("payment_installments"),
+            F.sum("payment_value").alias("payment_value"),
+        )
+        .join(top_payment, "order_id")
+    )
+
+    w_rev = Window.partitionBy("order_id").orderBy(F.col("review_answer_timestamp").desc())
+    reviews_dedup = (
+        reviews.withColumn("rn", F.row_number().over(w_rev))
+        .filter("rn = 1")
+        .drop("rn")
+    )
+    return payments_agg, reviews_dedup
 def merge_datasets():
     orders = load_orders()
     customers = load_customers()
@@ -17,6 +43,7 @@ def merge_datasets():
     reviews = load_reviews()
     sellers = load_sellers()
     translation = load_translation()
+    payments, reviews = aggregate_to_order_grain(payments, reviews)
     business_df = orders.join(
         customers,
         on="customer_id",

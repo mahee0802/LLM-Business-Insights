@@ -150,9 +150,9 @@
             "created": 5,
             "approved": 2
         },
-        "average_delivery_time_days": 12.09,
-        "delayed_orders": 7821,
-        "delayed_order_percentage": 7.86
+        "average_delivery_time_days": 12.5,
+        "delayed_orders": 6535,
+        "delayed_order_percentage": 6.57
     },
     "products": {
         "top_selling_categories": {
@@ -195,11 +195,11 @@
     "reviews": {
         "average_review_rating": 4.09,
         "rating_distribution": {
-            "1.0": 11363,
-            "2.0": 3131,
-            "3.0": 8133,
-            "4.0": 19038,
-            "5.0": 57008
+            "1": 11363,
+            "2": 3131,
+            "3": 8133,
+            "4": 19038,
+            "5": 57008
         },
         "best_rated_categories": {
             "cds_dvds_musicals": 4.64,
@@ -269,52 +269,52 @@
             {
                 "seller_id": "4869f7a5dfa277a7dca6462dcf3b52b2",
                 "seller_state": "SP",
-                "total_order_item_value": 249640.7
+                "revenue": 249640.7
             },
             {
                 "seller_id": "7c67e1448b00f6e969d365cea6b010ab",
                 "seller_state": "SP",
-                "total_order_item_value": 239536.44
+                "revenue": 239536.44
             },
             {
                 "seller_id": "53243585a1d6dc2643021fd1853d8905",
                 "seller_state": "BA",
-                "total_order_item_value": 235856.68
+                "revenue": 235856.68
             },
             {
                 "seller_id": "4a3ca9315b744ce9f8e9374361493884",
                 "seller_state": "SP",
-                "total_order_item_value": 235539.96
+                "revenue": 235539.96
             },
             {
                 "seller_id": "fa1c13f2614d7b5c4749cbc52fecda94",
                 "seller_state": "SP",
-                "total_order_item_value": 204084.73
+                "revenue": 204084.73
             },
             {
                 "seller_id": "da8622b14eb17ae2831f4ac5b9dab84a",
                 "seller_state": "SP",
-                "total_order_item_value": 185192.32
+                "revenue": 185192.32
             },
             {
                 "seller_id": "7e93a43ef30c4f03f38b393420bc753a",
                 "seller_state": "SP",
-                "total_order_item_value": 182754.05
+                "revenue": 182754.05
             },
             {
                 "seller_id": "1025f0e2d44d7041d6cf58b6550e0bfa",
                 "seller_state": "SP",
-                "total_order_item_value": 172860.69
+                "revenue": 172860.69
             },
             {
                 "seller_id": "7a67c85e85bb2ce8582c35f2203ad736",
                 "seller_state": "SP",
-                "total_order_item_value": 162648.38
+                "revenue": 162648.38
             },
             {
                 "seller_id": "955fee9216a65b617aa5c0531780ce60",
                 "seller_state": "SP",
-                "total_order_item_value": 160602.68
+                "revenue": 160602.68
             }
         ]
     }

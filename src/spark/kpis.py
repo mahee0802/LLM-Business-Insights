@@ -12,7 +12,7 @@ def revenue_kpis(df):
     total_revenue = (df.agg(spark_round(sum("total_order_item_value"),2).alias("total_revenue")).first()["total_revenue"])
     revenue["total_revenue"] = float(total_revenue)
     # KPI 2 : Average Order Value
-    order_totals = (df.groupBy("order_id").agg(sum("total_order_item_value").alias("order_total")))
+    order_totals = (df.filter(col("order_item_id").isNotNull()).groupBy("order_id").agg(sum("total_order_item_value").alias("order_total")))
     avg_order_value = (order_totals.agg(spark_round(avg("order_total"),2).alias("average_order_value")).first()["average_order_value"])
     revenue["average_order_value"] = float(avg_order_value)
     # KPI 3 : Monthly Revenue Trend
@@ -121,7 +121,7 @@ def order_kpis(df):
     }
     # KPI 3 : Average Delivery Time (Days)
     avg_delivery_time = (
-        df.filter(
+        df.dropDuplicates(["order_id"]).filter(
             col("delivery_time_days").isNotNull()
         )
         .agg(
@@ -174,7 +174,25 @@ def product_kpis(df):
         row["product_category_name_english"]: int(row["items_sold"])
         for row in top_categories.collect()
     }
-    # KPI 2 : Average Product Price
+    # KPI 2 : Revenue by Category (Top 10)
+    category_revenue = (
+        df.groupBy("product_category_name_english")
+        .agg(
+            spark_round(
+                sum("total_order_item_value"),
+                2
+            ).alias("revenue")
+        )
+        .orderBy(desc("revenue"))
+        .limit(10)
+    )
+
+    products["revenue_by_category"] = {
+        row["product_category_name_english"]: float(row["revenue"])
+        for row in category_revenue.collect()
+    }
+
+    # KPI 3 : Average Product Price
     avg_price = (
         df.agg(
             avg("price").alias("avg_price")
@@ -183,16 +201,15 @@ def product_kpis(df):
     )
 
     products["average_product_price"] = round(float(avg_price), 2)
-
     print("Product KPIs generated successfully.")
-
     return products
+
 def payment_kpis(df):
     payments = {}
-
+    order_df = df.dropDuplicates(["order_id"])
     # KPI 1 : Payment Method Distribution
     payment_methods = (
-        df.groupBy("payment_type")
+        df.filter(col("payment_type").isNotNull()).groupBy("payment_type")
         .agg(
             countDistinct("order_id").alias("orders")
         )
@@ -206,7 +223,7 @@ def payment_kpis(df):
 
     # KPI 2 : Average Payment Value
     avg_payment = (
-        df.agg(
+        order_df.agg(
             avg("payment_value").alias("avg_payment")
         )
         .first()["avg_payment"]
@@ -216,7 +233,7 @@ def payment_kpis(df):
 
     # KPI 3 : Average Installments
     avg_installments = (
-        df.agg(
+        order_df.agg(
             avg("payment_installments").alias("avg_installments")
         )
         .first()["avg_installments"]
@@ -229,10 +246,11 @@ def payment_kpis(df):
     return payments
 def review_kpis(df):
     reviews = {}
+    order_df = df.dropDuplicates(["order_id"])
 
     # KPI 1 : Average Review Rating
     avg_rating = (
-        df.agg(
+        order_df.agg(
             avg("review_score").alias("avg_rating")
         )
         .first()["avg_rating"]
@@ -242,7 +260,7 @@ def review_kpis(df):
 
     # KPI 2 : Rating Distribution
     rating_distribution = (
-    df.filter(
+    order_df.filter(
         col("review_score").isNotNull()
     )
     .groupBy("review_score")

@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
-from src.data.load_data import load_business_summary
+from src.utils.summary_loader import load_business_summary
 from src.llm.prompts import (
     build_business_report_prompt,
     build_revenue_prompt,
@@ -26,6 +26,10 @@ monthly_revenue_df["Month"] = pd.to_datetime(
 )
 
 monthly_revenue_df = monthly_revenue_df.sort_values("Month")
+
+# Drop partial months at the start/end of the dataset (not real business performance)
+threshold = 0.05 * monthly_revenue_df["Revenue"].median()
+monthly_revenue_df = monthly_revenue_df[monthly_revenue_df["Revenue"] >= threshold]
 # Page Configuration
 st.set_page_config(
     page_title="Business AI Analyst",
@@ -142,9 +146,12 @@ if generate:
         with st.spinner("Generating business insights..."):
             report = generate_business_report(prompt)
         current_datetime = datetime.now().strftime("%d %B %Y | %I:%M %p")
-        metadata = f"""# Business Analysis Report
-        **Generated On:** {current_datetime}
-        **Analysis Type:** {analysis}---"""
+        metadata = (
+            "# Business Analysis Report\n\n"
+            f"**Generated On:** {current_datetime}  \n"
+            f"**Analysis Type:** {analysis}\n\n"
+            "---\n\n"
+        )
         report = metadata + report
         save_report(report, filename)
         st.success("Report generated successfully!")
