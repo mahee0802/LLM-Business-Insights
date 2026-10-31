@@ -1,89 +1,72 @@
-## Executive Business Performance Analysis: Customer Behavior
-
-**To:** Executive Leadership Team
-**From:** Senior Business Consultant
-**Date:** October 26, 2023
-**Subject:** Strategic Insights and Recommendations on Customer Behavior
-
-This report provides a focused analysis of customer behavior, drawing exclusively from the provided e-commerce dataset. It highlights key observations, identifies inherent risks, uncovers growth opportunities, and proposes strategic recommendations to optimize our customer engagement and revenue performance.
+# Executive Briefing: Customer Behaviour & Analytics Report
 
 ---
 
-### 1. Customer Overview
+## 1. Customer Overview
 
-**Observations:**
+The business serves an active base of **96,096 customers** generating **99,441 orders**, representing a footprint across all 27 Brazilian federative units. 
 
-*   **Total Customer Base:** The company has served a substantial base of 96,096 unique customers.
-*   **Geographic Concentration:** A significant portion of our customer base is concentrated in key states: São Paulo (SP) accounts for 40,302 customers (approximately 42% of the total), followed by Rio de Janeiro (RJ) with 12,384 and Minas Gerais (MG) with 11,259. These three states combined represent over 66% of our customer base.
-*   **Low Repeat Purchase Rate:** A critical observation is the low number of repeat customers, totaling only 2,997. This represents a mere 3.12% of the total customer base.
-*   **Infrequent Purchases:** The average number of orders per customer stands at a low 1.03, indicating that the vast majority of customers make only a single purchase.
+### Geographic Distribution & Concentration
+* **Core Regional Dominance:** Demand is heavily concentrated in the Southeast region. **São Paulo (SP)** represents the single largest market with **40,302 customers (41.94%)**, followed by **Rio de Janeiro (RJ)** with **12,384 customers (12.89%)** and **Minas Gerais (MG)** with **11,259 customers (11.72%)**.
+* **Regional Aggregation:** The top three states account for **66.55%** of the total customer base (63,945 customers) and **62.53%** of total revenue (R$ 9,907,521.59).
+* **Peripheral Markets:** The remaining 24 states collectively represent only **33.45%** of the customer base. Northern and Central-Western states display low adoption (e.g., Roraima with 45 customers, Acre with 77 customers, and Amapá with 67 customers).
 
-**Business Implications:** While the total customer count is healthy, the overwhelming majority are one-time buyers, suggesting a strong focus on acquisition but significant challenges in fostering loyalty and repeat business.
+---
 
-### 2. Purchasing Behaviour
+## 2. Purchasing Behaviour
 
-**Observations:**
+### Transaction Size and Basket Economics
+* **Order Value:** The Average Order Value (AOV) stands at **R$ 160.58**, aligning closely with the average payment value of **R$ 160.99** and average product price of **R$ 120.65**. 
+* **Category Preferences:** Customer volume is led by everyday lifestyle categories, primarily **bed_bath_table** (11,115 orders), **health_beauty** (9,670 orders), and **sports_leisure** (8,641 orders). High-ticket discretionary purchases such as **watches_gifts** (5,991 orders yielding R$ 1,305,541.61) drive outsized revenue relative to order volume.
 
-*   **Average Order Value (AOV):** The average order value is $167.37. The average payment value is slightly higher at $172.74, suggesting some orders may involve multiple items or minor adjustments.
-*   **Top Revenue Categories:** "Health & Beauty," "Watches & Gifts," and "Bed, Bath & Table" are the top three categories by revenue, collectively generating over $4.17 million.
-*   **Top Selling Categories by Volume:** "Bed, Bath & Table" leads in order volume (11,988 units sold), followed by "Health & Beauty" (10,032 units) and "Sports & Leisure" (9,004 units). There is a strong correlation between high volume and high revenue categories.
-*   **Payment Preferences:** Credit cards are overwhelmingly the preferred payment method, accounting for 76,505 transactions. Boleto is a distant second with 19,784 transactions, followed by vouchers (3,866) and debit cards (1,528).
-*   **Installment Usage:** Customers using credit facilities average 2.94 installments per purchase, indicating a propensity for financed purchases, potentially for higher-value items.
+### Payment Preferences & Financing Behaviour
+* **Credit Predominance:** **Credit card** transactions dominate consumer preference, representing **74,975 transactions (75.40%)**.
+* **Alternative Payment Reliance:** **Boleto bancário** is the second most common payment instrument, representing **19,784 transactions (19.89%)**, serving cash-preferred and unbanked segments. Vouchers (3,151) and debit cards (1,527) capture minimal volume.
+* **Financing Dependency:** Customers utilize an average of **2.93 installments** per transaction. This demonstrates an entrenched consumer reliance on split-financing to service discretionary spending at an average ticket of R$ 160.99.
 
-**Business Implications:** Customers demonstrate clear preferences for certain product categories and payment methods. The prevalence of installment payments suggests price sensitivity or a willingness to purchase higher-value goods when flexible payment options are available.
+---
 
-### 3. Customer Retention Insights
+## 3. Customer Retention Insights
 
-**Observations:**
+### Repeat Purchase Performance
+* **Single-Purchase Profile:** Of the 96,096 customers, only **2,997 are repeat buyers**, yielding a repeat purchase rate of **3.12%**.
+* **Purchase Frequency:** The portfolio records an average of **1.03 orders per customer**. The business operates predominantly as a single-transaction acquisition engine rather than a recurring commercial ecosystem.
+* **Satisfaction vs. Retention Disconnect:** Overall customer sentiment is positive, with an average review score of **4.09 / 5.00** and **77,046 reviews (78.08% of all ratings) rated 4 or 5 stars**. The near-total lack of repurchase activity despite high reported satisfaction indicates an absence of structured post-purchase retention channels, replenishment incentives, or customer engagement mechanisms.
 
-*   **Overall Satisfaction:** The average review rating is 4.02 out of 5, which is generally positive.
-*   **Review Distribution:** While 66,343 reviews are 5-star, there is a significant volume of low ratings, with 15,428 1-star reviews and 4,162 2-star reviews. This indicates a segment of highly dissatisfied customers.
-*   **Worst-Rated Categories:** Categories like "Security & Services" (2.5 avg rating), "Unknown" (3.16), "Diapers & Hygiene" (3.26), and "Office Furniture" (3.53) show notably lower customer satisfaction.
-*   **Operational Impact on Experience:**
-    *   The average delivery time is 12.43 days.
-    *   A significant 6,535 orders (6.57%) are classified as delayed.
-    *   625 orders were canceled, and 609 orders were unavailable, directly impacting customer fulfillment.
+---
 
-**Business Implications:** Despite a generally positive average rating, the substantial number of low-star reviews and the performance issues in specific product categories and delivery operations point to critical areas that could be driving customer dissatisfaction and contributing to the low repeat purchase rate.
+## 4. Customer Risks
 
-### 4. Customer Risks
+* **Risk 1: Escalating Customer Acquisition Treadmill (Retention Failure)**  
+  With **96.88%** of customers never returning, top-line revenue depends almost entirely on continuous top-of-funnel customer acquisition. Any market saturation or increase in digital marketing acquisition costs poses a direct threat to profitability.
+* **Risk 2: Fulfillment Friction Damaging Brand Equity**  
+  Average delivery time is extended at **12.09 days**, and **7,821 orders (7.86%)** experienced shipping delays. Negative reviews are non-trivial: **11,363 reviews (11.52%)** are 1 star. Delivery delays and operational friction directly depress lifetime value (LTV) and brand advocacy.
+* **Risk 3: Exposure to Consumer Credit Tightening**  
+  Given that 75.40% of orders utilize credit cards with an average installment plan of ~3 months, any macroeconomic contraction in consumer credit or rise in merchant processing fees directly impacts conversion and affordability.
+* **Risk 4: Category Quality Degradation**  
+  Certain high-visibility or operational categories exhibit substandard satisfaction scores—most notably **office_furniture (3.49 rating)** and **diapers_and_hygiene (3.26 rating)**, alongside unclassified items (**Unknown: 3.16 rating; R$ 213,662.90 in revenue)**. Low satisfaction in repeat-friendly segments (such as baby care/hygiene) halts organic reordering.
 
-*   **High Churn Rate:** The extremely low repeat customer rate (3.12%) combined with a 1.03 average orders per customer indicates a high churn rate, meaning most customers are not returning after their initial purchase. This necessitates continuous, costly customer acquisition.
-*   **Reputation Damage:** The significant number of 1-star and 2-star reviews, coupled with a high percentage of delayed orders and order unavailability, poses a substantial risk to our brand reputation and could deter potential new customers.
-*   **Category-Specific Dissatisfaction:** Poor ratings in certain categories (e.g., "Security & Services," "Office Furniture") could lead to negative perceptions that spill over to other product offerings or lead to reduced sales within those specific segments.
-*   **Operational Inefficiencies:** Persistent delivery delays and unavailable orders are direct drivers of customer dissatisfaction, risking negative reviews, customer service complaints, and ultimately, lost future business.
+---
 
-### 5. Customer Growth Opportunities
+## 5. Customer Growth Opportunities
 
-*   **Enhance Repeat Purchases:** Given the current low repeat rate, even a marginal increase in customer retention could significantly boost lifetime value and reduce reliance on constant acquisition.
-*   **Optimize Product Portfolio:** Leverage insights from best-rated and worst-rated categories. Re-evaluate or improve offerings in low-satisfaction categories and promote high-satisfaction ones. For example, "cds_dvds_musicals" and "fashion_childrens_clothes" have high ratings, suggesting strong customer affinity, though their revenue contribution isn't explicitly stated as top-tier.
-*   **Improve Operational Excellence:** Addressing the root causes of delayed and unavailable orders presents a clear opportunity to improve customer experience, reduce churn, and enhance brand loyalty.
-*   **Geographic Expansion & Deeper Penetration:** While SP, RJ, and MG are dominant, opportunities exist to increase market share and customer engagement in other states, given their existing customer bases and revenue contributions.
-*   **Leverage Payment Insights:** The strong preference for credit card payments and installment usage offers an opportunity to promote higher-value items with attractive financing options.
+* **Opportunity 1: Category Replenishment and Cross-Selling**  
+  Several high-volume product categories exhibit natural replenishment cycles (e.g., **health_beauty** with R$ 1,441,248.07 across 9,670 orders, **pet_shop** with R$ 253,876.65, and **food_drink**). Implementing automated post-purchase repurchase triggers can unlock incremental revenue from the existing 93,099 one-time buyers.
+* **Opportunity 2: Installment Threshold Optimization**  
+  Leveraging the existing 2.93 installment habit to deliberately lift AOV: establishing tiered financing incentives for cart values exceeding R$ 200–250 can expand basket size.
+* **Opportunity 3: Southeast Geographic Penetration & Fulfillment Advantage**  
+  With 66.55% of buyers located in SP, RJ, and MG, consolidating regional distribution hubs to offer expedited, sub-48-hour delivery in the SP-RJ-MG corridor can convert operational speed into customer loyalty.
+* **Opportunity 4: Boleto Payment Conversion**  
+  With 19,784 orders executed via boleto, introducing instant-clearance alternatives or automated payment reminders can reduce cart abandonment and accelerate order fulfillment cycles.
 
-### 6. Customer Recommendations
+---
 
-1.  **Develop a Robust Customer Retention Program:**
-    *   **Action:** Implement targeted loyalty programs, personalized communication strategies, and post-purchase follow-ups. Focus on segments identified through behavior analysis for specific incentives.
-    *   **Justification:** The current 3.12% repeat customer rate is a critical weakness. Increasing this will directly impact Customer Lifetime Value (CLTV) and reduce customer acquisition costs.
-    *   **KPIs to Monitor:** Repeat customer rate, average orders per customer, customer lifetime value, customer churn rate.
+## 6. Customer Recommendations
 
-2.  **Launch an Operational Excellence Initiative Focused on Delivery and Fulfillment:**
-    *   **Action:** Conduct a deep-dive analysis into the causes of the 6.57% delayed orders and 609 unavailable orders. Implement process improvements, potentially renegotiate with logistics partners, or enhance inventory management.
-    *   **Justification:** Delivery issues and order unavailability directly erode customer trust and satisfaction, contributing to low repeat purchases and negative reviews.
-    *   **KPIs to Monitor:** Delayed order percentage, average delivery time, order status distribution (specifically 'unavailable' and 'canceled'), customer satisfaction scores related to delivery.
-
-3.  **Optimize Product Portfolio and Vendor Management Based on Review Data:**
-    *   **Action:** Investigate the specific products and sellers within the worst-rated categories (e.g., "Security & Services," "Office Furniture"). Consider product improvements, stricter vendor selection, or even discontinuation of consistently low-rated items. Conversely, analyze and promote products in the best-rated categories.
-    *   **Justification:** Addressing specific sources of dissatisfaction can mitigate reputational risk and improve overall customer experience, leading to higher product satisfaction and repeat purchases.
-    *   **KPIs to Monitor:** Average review rating per category, sales volume and revenue for problematic categories, customer service inquiries related to specific products.
-
-4.  **Implement Targeted Marketing and Geographic Engagement Strategies:**
-    *   **Action:** Develop campaigns to deepen engagement in high-density states (SP, RJ, MG) through localized promotions. Simultaneously, explore opportunities for cost-effective customer acquisition and brand building in underpenetrated states to diversify geographic revenue.
-    *   **Justification:** While existing customer concentration provides a strong base, expanding influence and capturing market share in other regions can drive overall customer growth and reduce concentration risk.
-    *   **KPIs to Monitor:** Customers by state, revenue by state, order volume by state, geographic customer acquisition cost.
-
-5.  **Review and Enhance Payment Strategy:**
-    *   **Action:** Capitalize on the strong credit card and installment preference by proactively promoting flexible payment options, particularly for higher-priced items. Evaluate the 'Boleto' process for potential friction points to ensure a smooth customer experience.
-    *   **Justification:** Aligning payment options with customer preferences can increase conversion rates, average order value, and customer satisfaction.
-    *   **KPIs to Monitor:** Payment method conversion rates, average installments used, average order value for financed purchases.
+| Strategic Area | Recommended Action | Underlying KPI / Rationale |
+| :--- | :--- | :--- |
+| **Lifecycle & Retention Marketing** | Deploy automated post-purchase email/SMS flows tailored by category replenishment cycles (e.g., 30/60-day cycles for *health_beauty* and *pet_shop*). | Directly addresses the **3.12% repeat purchase rate** across 96,096 customers. |
+| **Delivery Remediation** | Implement carrier SLA controls and dedicated tracking alerts for regional routes exceeding the **12.09-day average** to prevent delayed delivery breaches. | Mitigates the **7,821 delayed orders (7.86%)** and suppresses the **11,363 1-star reviews**. |
+| **Basket Expansion & Financing** | Introduce promotional installment terms (e.g., up to 4–6 interest-free installments) gated to minimum order baskets of R$ 200+. | Capitalizes on the **2.93 installment average** to systematically lift the current **R$ 160.58 AOV**. |
+| **Targeted Category Remediation** | Enforce quality filters, delivery packaging audits, and vendor standards on underperforming review categories (*office_furniture* at 3.49; *diapers_and_hygiene* at 3.26). | Low review ratings suppress organic conversion and eliminate repeat customer potential. |
+| **Regional Fulfillment Priority** | Reallocate fulfillment prioritization and inventory staging into São Paulo and Rio de Janeiro fulfillment nodes. | Supports **54.83% of all customers** residing in SP (40,302) and RJ (12,384), reducing overall cycle times. |
