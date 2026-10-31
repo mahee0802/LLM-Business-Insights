@@ -1,353 +1,62 @@
-# LLM Business Insights Pipeline
-An end-to-end LLM-powered Business Insights Pipeline that analyzes an e-commerce dataset, generates business KPIs, and uses Google's Gemini API to produce professional business reports and answer business questions through dynamic prompt engineering.
+# LLM Business Insights
 
----
+Turns raw e-commerce data into an executive-style business report. Pandas computes verified KPIs, and Gemini turns them into written analysis. Built on the Olist Brazilian e-commerce dataset (~100K orders, 2016-2018).
 
-## Project Overview
-
-This project demonstrates how Large Language Models (LLMs) can be integrated into a traditional data analytics workflow.
-
-The pipeline:
-
-- Loads processed business data
-- Generates key business metrics (KPIs)
-- Stores them in a structured JSON format
-- Uses prompt engineering techniques to build dynamic prompts
-- Sends prompts to the Gemini API
-- Generates professional business reports
-- Saves reports as Markdown files
-
-The project emphasizes clean architecture, modular design, prompt engineering, and reusable LLM workflows.
-
----
-
-## Features
-
-### Data Processing
-
-- Load processed business data
-- Generate business KPIs
-- Save KPIs as a structured JSON file
-
-### LLM Integration
-
-- Google Gemini API integration
-- Modular LLM client
-- Dynamic prompt generation
-
-### Business Analysis
-
-Generate:
-
-- Full Business Report
-- Revenue Analysis
-- Customer Analysis
-- Product Analysis
-- Custom Business Question Analysis
-
-### Prompt Engineering
-
-Implements:
-
-- Role Prompting
-- Prompt Templates
-- Zero-shot Prompting
-- Dynamic Prompt Generation
-- Modular Prompt Functions
-
-### Report Generation
-
-Reports are generated in Markdown format and automatically saved inside the `outputs/` folder.
-
----
-
-## Project Structure
-
-```text
-LLM_Pipeline/
-
-│
-├── data/
-│   ├── raw/
-│   └── processed/
-│
-├── docs/
-│
-├── notebooks/
-│
-├── outputs/
-│   ├── business_report.md
-│   ├── revenue_report.md
-│   ├── customer_report.md
-│   ├── product_report.md
-│   └── custom_question.md
-│
-├── src/
-│   │
-│   ├── analysis/
-│   │   └── generate_kpis.py
-│   │
-│   ├── data/
-│   │   └── load_data.py
-│   │
-│   ├── llm/
-│   │   ├── llm_client.py
-│   │   ├── prompts.py
-│   │   └── generate_insights.py
-│   │
-│   └── utils/
-│       └── save_report.py
-│
-├── app.py
-├── requirements.txt
-├── .env
-├── .gitignore
-└── README.md
-```
-
----
-
-## Technologies Used
-
-### Programming Language
-
-- Python
-
-### Libraries
-
-- Pandas
-- NumPy
-- python-dotenv
-- Google GenAI SDK
-
-### LLM
-
-- Google Gemini 2.5 Flash
-
-### Development Tools
-
-- VS Code
-- Git
-- GitHub
-
----
-
-## Dataset
-
-This project uses the **Brazilian E-Commerce Public Dataset by Olist**.
-
-The current version of the project utilizes selected datasets to generate business insights.
-
-Examples include:
-
-- Orders
-- Order Items
-- Customers
-
-The project is designed to support additional Olist datasets in future iterations.
-
----
-
-## Workflow
-
-```text
-Processed Dataset
-        │
-        ▼
-Generate Business KPIs
-        │
-        ▼
-business_summary.json
-        │
-        ▼
-Prompt Builder
-        │
-        ▼
-Gemini API
-        │
-        ▼
-Business Report
-        │
-        ▼
-Markdown Report
-```
-
----
-
-## Prompt Engineering Workflow
-
-```text
-Business Summary
-        │
-        ▼
-Prompt Template
-        │
-        ▼
-Selected Analysis Type
-        │
-        ▼
-Dynamic Prompt
-        │
-        ▼
-Gemini API
-        │
-        ▼
-Generated Report
-```
-
----
-
-## Available Analyses
-
-When the application starts, users can choose one of the following:
+## How it works
 
 ```
-1. Generate Full Business Report
-2. Revenue Analysis
-3. Customer Analysis
-4. Product Analysis
-5. Ask a Custom Business Question
-0. Exit
+Raw CSVs -> merge to order-item grain -> KPI summary (JSON) -> prompt builders -> Gemini -> reports
 ```
 
-Each option generates a different prompt and produces a specialized report.
+1. `src/data/build_business_dataset.py` merges 8 Olist tables into one analysis table
+2. `src/analysis/generate_kpis.py` computes revenue, customer, order, product, payment, review, geography and seller KPIs
+3. `src/llm/prompts.py` builds grounded prompts (currency, data coverage window, partial months)
+4. `src/llm/generate_insights.py` calls Gemini with retry and backoff
+5. `cli.py` (menu) and `app.py` (Streamlit) produce the reports in `outputs/`
 
----
-
-## Example Business Report Sections
-
-A full report typically contains:
-
-- Executive Summary
-- Revenue Analysis
-- Customer Behavior Insights
-- Product Performance
-- Potential Business Risks
-- Growth Opportunities
-- Actionable Recommendations
-
----
-
-## Installation
-
-Clone the repository
+## Setup
 
 ```bash
-git clone <repository-url>
+pip install pandas python-dotenv google-genai streamlit pytest
 ```
 
-Move into the project directory
+1. Download the [Olist dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) and put the CSVs in `data/raw/olist_dataset/`
+2. Create a `.env` file:
+   ```
+   GEMINI_API_KEY=your_key
+   GEMINI_MODEL=gemini-3.7-flash   # optional
+   ```
+
+## Run
 
 ```bash
-cd LLM_Pipeline
+python -m src.data.build_business_dataset   # build the merged table
+python -m src.analysis.generate_kpis        # compute KPIs -> data/processed/business_summary.json
+python cli.py                               # command-line report generator
+streamlit run app.py                        # web UI
+pytest -v                                   # tests
 ```
 
-Create a virtual environment
+## Key results (Olist, Sep 2016 - Aug 2018)
 
-```bash
-python -m venv .venv
-```
+- Revenue R$15.84M across 99,441 orders; AOV R$160.58
+- 3.12% repeat purchase rate; SP generates 37% of revenue
+- Average review 4.09; 11.5% of reviews are 1 star
 
-Activate the virtual environment
+## Engineering notes
 
-Windows
+Bugs found and fixed while validating the pipeline:
 
-```bash
-.venv\Scripts\activate
-```
+- **Join fan-out:** payments and reviews were joined onto item-level rows, inflating revenue from R$15.84M to R$16.64M. Fixed by aggregating payments and reviews to one row per order before joining, and covered by tests.
+- **Wrong grain for order-level KPIs:** review counts and averages were computed on item rows (112,464 "reviews" vs 99,224 real). They now use one row per order.
+- **LLM misreading data edges:** the model reported a "revenue collapse" in Sep/Oct 2018, which is just where the dataset ends. Prompts now state the currency, the coverage window and the partial months.
 
-Install dependencies
+## Known limitations / next steps
 
-```bash
-pip install -r requirements.txt
-```
+- A Spark implementation exists in `src/spark/` but is not tested, and the reports use the pandas pipeline
+- LLM output is not yet validated against the KPI JSON (a numeric claim checker is planned)
+- Custom questions can only be answered from the KPI summary; tool calling over the dataset is planned
 
----
+## Screenshots
 
-## Environment Variables
-
-Create a `.env` file inside the project root.
-
-Example:
-
-```text
-GEMINI_API_KEY=YOUR_API_KEY
-```
-
----
-
-## Running the Project
-
-Run
-
-```bash
-python app.py
-```
-
-Select the desired analysis from the interactive menu.
-
-The generated report will be displayed in the terminal and saved inside the `outputs/` directory.
-
----
-
-## Example Output
-
-```
-========================================
-BUSINESS INSIGHTS GENERATOR
-========================================
-
-1. Generate Full Business Report
-2. Revenue Analysis
-3. Customer Analysis
-4. Product Analysis
-5. Ask a Custom Business Question
-0. Exit
-========================================
-```
-
----
-
-## Learning Outcomes
-
-This project demonstrates practical understanding of:
-
-- Data preprocessing
-- Business KPI generation
-- JSON-based data exchange
-- API integration
-- Google Gemini API
-- Prompt Engineering
-- Dynamic Prompt Templates
-- Modular Software Design
-- Command Line Applications
-- Git and GitHub
-
----
-
-## Future Improvements
-
-Potential enhancements include:
-
-- Integration of additional Olist datasets
-- Richer business KPI generation
-- Advanced business analytics
-- Retrieval-Augmented Generation (RAG)
-- Streamlit web application
-- Interactive dashboards
-- Report versioning with timestamps
-- JSON structured LLM outputs
-
----
-
-## Author
-
-**Mahee Patkar**
-
-Engineering Student | AI & Machine Learning Enthusiast
-
----
-
-## License
-
-This project is intended for educational and portfolio purposes.
+<add a screenshot of the Streamlit app here>
