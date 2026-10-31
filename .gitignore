@@ -20,5 +20,6 @@ venv/
 
 # Secrets
 .env
-data/
+data/raw/
+data/processed/*.csv
 .venv/
