@@ -18,7 +18,8 @@ def revenue_kpis(df):
     )
     # KPI 2: Average Order Value
     order_totals = (
-        df.groupby("order_id")["total_order_item_value"]
+        df.dropna(subset=["total_order_item_value"])
+        .groupby("order_id")["total_order_item_value"]
         .sum()
     )
     revenue["average_order_value"] = round(
@@ -67,7 +68,7 @@ def order_kpis(df):
     status_distribution = (df.groupby("order_status")["order_id"].nunique().sort_values(ascending=False))
     orders["order_status_distribution"] = (status_distribution.to_dict())
     # KPI 3: Average Delivery Time (Days)
-    avg_delivery_time = (df["delivery_time_days"].dropna().mean())
+    avg_delivery_time = (df.drop_duplicates(subset="order_id")["delivery_time_days"].dropna().mean())
     orders["average_delivery_time_days"] = round(avg_delivery_time,2)
     # KPI 4: Delayed Orders
     delayed_orders = (df.loc[df["delivery_delay_days"] > 0, "order_id"].nunique())
@@ -99,10 +100,11 @@ def payment_kpis(df):
     payment_methods = (df.groupby("payment_type")["order_id"].nunique().sort_values(ascending=False))
     payments["payment_method_distribution"] = (payment_methods.to_dict())
     # KPI 2: Average Payment Value
-    avg_payment = df["payment_value"].mean()
+    order_df = df.drop_duplicates(subset="order_id")
+    avg_payment = order_df["payment_value"].mean()
     payments["average_payment_value"] = round(avg_payment,2)
     # KPI 3: Average Installments
-    avg_installments = df["payment_installments"].mean()
+    avg_installments = order_df["payment_installments"].mean()
     payments["average_installments"] = round(avg_installments,2)
     print("Payment KPIs generated successfully.")
     return payments
@@ -110,10 +112,11 @@ def payment_kpis(df):
 def review_kpis(df):
     reviews = {}
     # KPI 1: Average Review Rating
-    avg_rating = df["review_score"].mean()
+    order_df = df.drop_duplicates(subset="order_id")
+    avg_rating = order_df["review_score"].mean()
     reviews["average_review_rating"] = round(avg_rating,2)
     # KPI 2: Rating Distribution
-    rating_distribution = (df.groupby("review_score")["review_id"].count().sort_index())
+    rating_distribution = (order_df.groupby("review_score")["review_id"].count().sort_index())
     reviews["rating_distribution"] = (rating_distribution.to_dict())
     # KPI 3: Best Rated Categories (Top 10)
     best_categories = (

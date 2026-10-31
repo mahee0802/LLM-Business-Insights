@@ -1,7 +1,7 @@
 {
     "revenue": {
         "total_revenue": 15843553.24,
-        "average_order_value": 159.33,
+        "average_order_value": 160.58,
         "monthly_revenue": {
             "2016-09": 354.75,
             "2016-10": 56808.84,
@@ -150,7 +150,7 @@
             "created": 5,
             "approved": 2
         },
-        "average_delivery_time_days": 12.01,
+        "average_delivery_time_days": 12.09,
         "delayed_orders": 7821,
         "delayed_order_percentage": 7.86
     },
@@ -189,17 +189,17 @@
             "debit_card": 1527,
             "not_defined": 3
         },
-        "average_payment_value": 180.48,
-        "average_installments": 3.02
+        "average_payment_value": 160.99,
+        "average_installments": 2.93
     },
     "reviews": {
-        "average_review_rating": 4.02,
+        "average_review_rating": 4.09,
         "rating_distribution": {
-            "1.0": 14681,
-            "2.0": 3905,
-            "3.0": 9428,
-            "4.0": 21223,
-            "5.0": 63227
+            "1.0": 11363,
+            "2.0": 3131,
+            "3.0": 8133,
+            "4.0": 19038,
+            "5.0": 57008
         },
         "best_rated_categories": {
             "cds_dvds_musicals": 4.64,
