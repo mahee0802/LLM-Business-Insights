@@ -20,3 +20,5 @@ venv/
 
 # Secrets
 .env
+data/
+.venv/
