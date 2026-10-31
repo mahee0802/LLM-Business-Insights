@@ -62,6 +62,27 @@ Formatting Guidelines:
 - Avoid repeating KPI values unnecessarily.
 - Keep the report suitable for executive stakeholders.
 """.strip()
+def build_data_context(business_summary):
+    """
+    Tell the model what period the data covers, the currency, and which
+    months are incomplete, so it does not misread dataset edges as business events.
+    """
+    monthly = business_summary["revenue"]["monthly_revenue"]
+    values = sorted(monthly.values())
+    median = values[len(values) // 2]
+    low_months = [m for m, v in sorted(monthly.items()) if v < 0.05 * median]
+
+    return f"""
+Data Notes (important):
+
+- All monetary values are in Brazilian Real (R$), not US dollars.
+- The data covers purchases from {min(monthly)} to {max(monthly)}.
+- This is a historical sample dataset. Months with negligible revenue
+  ({", ".join(low_months)}) reflect partial or incomplete data at the start
+  and end of the dataset, NOT business performance.
+- Do NOT describe low revenue in those months as a collapse, decline or
+  operational failure. Exclude them from trend and growth conclusions.
+""".strip()
 
 def build_base_prompt(business_summary):
     """
@@ -72,6 +93,8 @@ def build_base_prompt(business_summary):
 {ROLE}
 
 {CONTEXT}
+
+{build_data_context(business_summary)}
 
 Business KPIs:
 
