@@ -1,72 +1,133 @@
-# Executive Briefing: Customer Behaviour & Analytics Report
+# Executive Report: Customer Behaviour & Strategic Insights
+
+**Evaluation Period:** October 2016 – August 2018  
+**Prepared For:** Executive Leadership Team  
+**Focus Area:** Customer Analytics, Behaviour, Retention, and Growth Strategy  
 
 ---
 
 ## 1. Customer Overview
 
-The business serves an active base of **96,096 customers** generating **99,441 orders**, representing a footprint across all 27 Brazilian federative units. 
+Analysis of the company’s customer dataset from the reliable reporting period of **October 2016 to August 2018** reveals a customer base of **96,096 total customers** generating **99,441 orders**.
 
-### Geographic Distribution & Concentration
-* **Core Regional Dominance:** Demand is heavily concentrated in the Southeast region. **São Paulo (SP)** represents the single largest market with **40,302 customers (41.94%)**, followed by **Rio de Janeiro (RJ)** with **12,384 customers (12.89%)** and **Minas Gerais (MG)** with **11,259 customers (11.72%)**.
-* **Regional Aggregation:** The top three states account for **66.55%** of the total customer base (63,945 customers) and **62.53%** of total revenue (R$ 9,907,521.59).
-* **Peripheral Markets:** The remaining 24 states collectively represent only **33.45%** of the customer base. Northern and Central-Western states display low adoption (e.g., Roraima with 45 customers, Acre with 77 customers, and Amapá with 67 customers).
+### Geographic Distribution
+Customer acquisition is heavily concentrated in the Southeastern region of Brazil. The top three states account for **66.5%** of the total customer base (63,945 customers).
+
+| State | Customer Count | % of Total Base | Revenue Contribution (R$) |
+| :--- | :--- | :--- | :--- |
+| **São Paulo (SP)** | 40,302 | 41.9% | R$ 5,921,678.12 |
+| **Rio de Janeiro (RJ)** | 12,384 | 12.9% | R$ 2,129,681.98 |
+| **Minas Gerais (MG)** | 11,259 | 11.7% | R$ 1,856,161.49 |
+| **Rio Grande do Sul (RS)** | 5,277 | 5.5% | R$ 885,826.76 |
+| **Paraná (PR)** | 4,882 | 5.1% | R$ 800,935.44 |
+| **Other States (22)** | 21,992 | 22.9% | R$ 4,249,270.45 |
+
+Key regional markets outside the top three include Rio Grande do Sul (5,277 customers), Paraná (4,882 customers), Santa Catarina (3,534 customers), and Bahia (3,277 customers). The lowest customer concentrations are in Northern states such as Roraima (45 customers) and Amapá (67 customers).
 
 ---
 
 ## 2. Purchasing Behaviour
 
-### Transaction Size and Basket Economics
-* **Order Value:** The Average Order Value (AOV) stands at **R$ 160.58**, aligning closely with the average payment value of **R$ 160.99** and average product price of **R$ 120.65**. 
-* **Category Preferences:** Customer volume is led by everyday lifestyle categories, primarily **bed_bath_table** (11,115 orders), **health_beauty** (9,670 orders), and **sports_leisure** (8,641 orders). High-ticket discretionary purchases such as **watches_gifts** (5,991 orders yielding R$ 1,305,541.61) drive outsized revenue relative to order volume.
+### Spending & Basket Size
+* **Average Order Value (AOV):** R$ 160.58
+* **Average Payment Value:** R$ 160.99
+* **Average Product Price:** R$ 120.65
 
-### Payment Preferences & Financing Behaviour
-* **Credit Predominance:** **Credit card** transactions dominate consumer preference, representing **74,975 transactions (75.40%)**.
-* **Alternative Payment Reliance:** **Boleto bancário** is the second most common payment instrument, representing **19,784 transactions (19.89%)**, serving cash-preferred and unbanked segments. Vouchers (3,151) and debit cards (1,527) capture minimal volume.
-* **Financing Dependency:** Customers utilize an average of **2.93 installments** per transaction. This demonstrates an entrenched consumer reliance on split-financing to service discretionary spending at an average ticket of R$ 160.99.
+### Payment Preferences
+Customer transactions are dominated by credit card usage, which accounts for the vast majority of payment transactions, followed by cash-equivalent methods (Boleto).
+
+```
+Credit Card : 74,975 transactions
+Boleto      : 19,784 transactions
+Voucher     :  3,151 transactions
+Debit Card  :  1,527 transactions
+Not Defined :      3 transactions
+```
+
+* **Financing Dynamics:** Customers use an average of **2.93 installments** per payment, indicating a clear reliance on structured payment options for purchasing decisions.
+
+### Category Demand Patterns
+Customer buying behaviour varies significantly across categories in terms of order volume versus overall spend:
+
+* **Top Categories by Order Volume:** `bed_bath_table` (11,115 items), `health_beauty` (9,670 items), and `sports_leisure` (8,641 items).
+* **Top Categories by Expenditure:** `health_beauty` (R$ 1,441,248.07), `watches_gifts` (R$ 1,305,541.61), and `bed_bath_table` (R$ 1,241,681.72).
 
 ---
 
 ## 3. Customer Retention Insights
 
-### Repeat Purchase Performance
-* **Single-Purchase Profile:** Of the 96,096 customers, only **2,997 are repeat buyers**, yielding a repeat purchase rate of **3.12%**.
-* **Purchase Frequency:** The portfolio records an average of **1.03 orders per customer**. The business operates predominantly as a single-transaction acquisition engine rather than a recurring commercial ecosystem.
-* **Satisfaction vs. Retention Disconnect:** Overall customer sentiment is positive, with an average review score of **4.09 / 5.00** and **77,046 reviews (78.08% of all ratings) rated 4 or 5 stars**. The near-total lack of repurchase activity despite high reported satisfaction indicates an absence of structured post-purchase retention channels, replenishment incentives, or customer engagement mechanisms.
+The dataset highlights a severe structural challenge in customer repeat purchase rates.
+
+```
+Total Unique Customers : 96,096
+Repeat Customers       :  2,997
+Repeat Customer Rate   :  3.12%
+Avg Orders / Customer  :   1.03
+```
+
+### Business Implications
+* **Single-Transaction Dominance:** **96.88%** of customers purchased only once during the evaluated 23-month period.
+* **Acquisition Efficiency:** The business operates almost entirely as a transactional acquisition engine rather than a subscriber or relationship-based model. Revenue expansion is currently dependent on acquiring new customers rather than extracting lifetime value (LTV) from existing ones.
 
 ---
 
 ## 4. Customer Risks
 
-* **Risk 1: Escalating Customer Acquisition Treadmill (Retention Failure)**  
-  With **96.88%** of customers never returning, top-line revenue depends almost entirely on continuous top-of-funnel customer acquisition. Any market saturation or increase in digital marketing acquisition costs poses a direct threat to profitability.
-* **Risk 2: Fulfillment Friction Damaging Brand Equity**  
-  Average delivery time is extended at **12.09 days**, and **7,821 orders (7.86%)** experienced shipping delays. Negative reviews are non-trivial: **11,363 reviews (11.52%)** are 1 star. Delivery delays and operational friction directly depress lifetime value (LTV) and brand advocacy.
-* **Risk 3: Exposure to Consumer Credit Tightening**  
-  Given that 75.40% of orders utilize credit cards with an average installment plan of ~3 months, any macroeconomic contraction in consumer credit or rise in merchant processing fees directly impacts conversion and affordability.
-* **Risk 4: Category Quality Degradation**  
-  Certain high-visibility or operational categories exhibit substandard satisfaction scores—most notably **office_furniture (3.49 rating)** and **diapers_and_hygiene (3.26 rating)**, alongside unclassified items (**Unknown: 3.16 rating; R$ 213,662.90 in revenue)**. Low satisfaction in repeat-friendly segments (such as baby care/hygiene) halts organic reordering.
+### 1. Retention Deficit
+With an average of **1.03 orders per customer**, customer lifetime value is capped near the single-order baseline (AOV R$ 160.58). High reliance on continuous customer acquisition exposes the business to rising acquisition costs.
+
+### 2. Negative Review Concentration
+While the overall review score is positive (**4.09 out of 5.0** across 98,665 reviews), **14.7% of all reviews** fall into the 1-star or 2-star negative categories.
+
+| Review Rating | Count | Share of Total |
+| :--- | :--- | :--- |
+| **5 Stars** | 57,008 | 57.8% |
+| **4 Stars** | 19,038 | 19.3% |
+| **3 Stars** | 8,133 | 8.2% |
+| **2 Stars** | 3,131 | 3.2% |
+| **1 Star** | 11,363 | 11.5% |
+
+### 3. Category Quality Disconnects
+Certain product categories exhibit low customer satisfaction scores, which risks damaging brand perception:
+
+* `security_and_services`: 2.50 average rating
+* `Unknown`: 3.16 average rating
+* `diapers_and_hygiene`: 3.26 average rating
+* `office_furniture`: 3.49 average rating
+
+### 4. Fulfillment Experience Friction
+* **Average Delivery Time:** 12.5 days.
+* **Delayed Orders:** 6,535 orders out of total orders (99,441), representing a **6.57% delay rate across all orders**.
+* *Note:* While the data does not explicitly link delivery delays directly to individual negative reviews, long delivery timelines and order delays **may be related** to customer dissatisfaction and lower review scores.
 
 ---
 
 ## 5. Customer Growth Opportunities
 
-* **Opportunity 1: Category Replenishment and Cross-Selling**  
-  Several high-volume product categories exhibit natural replenishment cycles (e.g., **health_beauty** with R$ 1,441,248.07 across 9,670 orders, **pet_shop** with R$ 253,876.65, and **food_drink**). Implementing automated post-purchase repurchase triggers can unlock incremental revenue from the existing 93,099 one-time buyers.
-* **Opportunity 2: Installment Threshold Optimization**  
-  Leveraging the existing 2.93 installment habit to deliberately lift AOV: establishing tiered financing incentives for cart values exceeding R$ 200–250 can expand basket size.
-* **Opportunity 3: Southeast Geographic Penetration & Fulfillment Advantage**  
-  With 66.55% of buyers located in SP, RJ, and MG, consolidating regional distribution hubs to offer expedited, sub-48-hour delivery in the SP-RJ-MG corridor can convert operational speed into customer loyalty.
-* **Opportunity 4: Boleto Payment Conversion**  
-  With 19,784 orders executed via boleto, introducing instant-clearance alternatives or automated payment reminders can reduce cart abandonment and accelerate order fulfillment cycles.
+### 1. Re-Engagement in Consumable & High-Volume Categories
+Categories such as `health_beauty` (9,670 orders; R$ 1.44M revenue) and `bed_bath_table` (11,115 orders; R$ 1.24M revenue) feature natural replenishment cycles or product expansion possibilities that are currently uncaptured, given the overall 3.12% repeat purchase rate.
+
+### 2. Geographic Expansion Beyond the Core Southeast
+While SP, RJ, and MG generate 66.5% of demand, secondary markets currently demonstrate established baseline demand without primary dominance:
+* **Southern Hubs:** RS (5,277 customers), PR (4,882 customers), SC (3,534 customers).
+* **Northeastern Hubs:** BA (3,277 customers), PE (1,609 customers).
+
+Expanding market penetration in these secondary states represents an opportunistic growth avenue.
+
+### 3. Payment Optimization Strategy
+Given that credit cards represent **75.4%** of payment methods and customers average **2.93 installments**, tailoring promotion structures and financing incentives around multi-installment credit options directly aligns with demonstrated customer payment preferences.
 
 ---
 
 ## 6. Customer Recommendations
 
-| Strategic Area | Recommended Action | Underlying KPI / Rationale |
-| :--- | :--- | :--- |
-| **Lifecycle & Retention Marketing** | Deploy automated post-purchase email/SMS flows tailored by category replenishment cycles (e.g., 30/60-day cycles for *health_beauty* and *pet_shop*). | Directly addresses the **3.12% repeat purchase rate** across 96,096 customers. |
-| **Delivery Remediation** | Implement carrier SLA controls and dedicated tracking alerts for regional routes exceeding the **12.09-day average** to prevent delayed delivery breaches. | Mitigates the **7,821 delayed orders (7.86%)** and suppresses the **11,363 1-star reviews**. |
-| **Basket Expansion & Financing** | Introduce promotional installment terms (e.g., up to 4–6 interest-free installments) gated to minimum order baskets of R$ 200+. | Capitalizes on the **2.93 installment average** to systematically lift the current **R$ 160.58 AOV**. |
-| **Targeted Category Remediation** | Enforce quality filters, delivery packaging audits, and vendor standards on underperforming review categories (*office_furniture* at 3.49; *diapers_and_hygiene* at 3.26). | Low review ratings suppress organic conversion and eliminate repeat customer potential. |
-| **Regional Fulfillment Priority** | Reallocate fulfillment prioritization and inventory staging into São Paulo and Rio de Janeiro fulfillment nodes. | Supports **54.83% of all customers** residing in SP (40,302) and RJ (12,384), reducing overall cycle times. |
+The following evidence-based strategies address identified risks and leverage growth opportunities:
+
+### Executive Action Matrix
+
+| Strategic Focus | Action Item | Expected Impact | Data Justification |
+| :--- | :--- | :--- | :--- |
+| **Retention Strategy** | Launch post-purchase retention workflows for high-volume categories (`health_beauty`, `bed_bath_table`). | Increase repeat purchase rate above 3.12% and elevate orders-per-customer from 1.03. | 96.88% of customers currently buy only once. |
+| **Fulfillment Optimization** | Audit logistics operations to reduce the 12.5-day average delivery cycle, focusing on top customer regions (SP, RJ, MG). | Improve customer satisfaction and reduce exposure to 1-star reviews. | 6,535 delayed orders (6.57% of total) and 11,363 1-star reviews. |
+| **Catalog Quality Control** | Audit or delist low-performing vendors/products in poorly rated categories (`diapers_and_hygiene`, `office_furniture`, `security_and_services`). | Eliminate drag on overall review rating (4.09). | Ratings in these categories range from 2.50 to 3.49. |
+| **Checkout & Financing** | Optimize credit card checkout experience to support flexible installment plans up to 3–6 cycles. | Improve conversion rates by catering to established spending habits. | Credit card is the top payment method (74,975 uses) with an average of 2.93 installments. |

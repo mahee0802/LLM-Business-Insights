@@ -48,6 +48,11 @@ Instructions:
 • Opportunities
 • Recommendations
 
+- Do NOT attribute causes to events, holidays or promotions (e.g. Black Friday) unless the KPIs state them.
+- Do NOT describe how payment methods or industry practices work; report only the KPI values.
+- Do NOT claim a correlation or causal link between two metrics unless the KPIs directly show it. Say they "may be related" and note that the data does not prove it.
+- The delayed-order percentage is measured against all orders, not only delivered ones.
+
 Recommendations should logically follow from the observations.
 """.strip()
 
@@ -61,6 +66,7 @@ Formatting Guidelines:
 - Support conclusions with the supplied KPIs.
 - Avoid repeating KPI values unnecessarily.
 - Keep the report suitable for executive stakeholders.
+- Do NOT draw ASCII charts or text-art diagrams. Use Markdown tables where a table helps.
 """.strip()
 def build_data_context(business_summary):
     """
@@ -71,12 +77,13 @@ def build_data_context(business_summary):
     values = sorted(monthly.values())
     median = values[len(values) // 2]
     low_months = [m for m, v in sorted(monthly.items()) if v < 0.05 * median]
+    full_months = [m for m in sorted(monthly) if m not in low_months]
 
     return f"""
 Data Notes (important):
 
 - All monetary values are in Brazilian Real (R$), not US dollars.
-- The data covers purchases from {min(monthly)} to {max(monthly)}.
+- Reliable full-month data covers {full_months[0]} to {full_months[-1]}. Always state the period as this range.
 - This is a historical sample dataset. Months with negligible revenue
   ({", ".join(low_months)}) reflect partial or incomplete data at the start
   and end of the dataset, NOT business performance.

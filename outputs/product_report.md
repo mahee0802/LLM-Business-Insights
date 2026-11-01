@@ -1,117 +1,134 @@
-# Executive Report: Product Portfolio Performance & Strategic Roadmap
+# Executive Report: Product Performance & Category Strategy
+
+**Reporting Period:** October 2016 – August 2018 (2016-10 to 2018-08)  
+**Currency:** Brazilian Real (R$)  
+**Target Audience:** Executive Leadership Team  
 
 ---
 
 ## 1. Product Performance Overview
 
-An analysis of the historical transaction data demonstrates a high-volume, diversified product portfolio totaling **R$ 15,843,553.24** in gross sales across more than 70 product categories. 
+Over the evaluated operational timeframe (October 2016 to August 2018), the business generated **R$ 15,843,553.24** in total revenue across **99,441 total orders**. The company maintains an **average product price of R$ 120.65**, an **Average Order Value (AOV) of R$ 160.58**, and an **overall average customer review rating of 4.09 out of 5.00**.
 
-### Key Portfolio Metrics
-* **Average Product Price:** R$ 120.65 (vs. Average Order Value of R$ 160.58, indicating multi-item baskets or added freight charges).
-* **Portfolio Health:** Product reviews average **4.09 out of 5.0**, indicating a generally positive baseline for product quality, with 76,046 orders (76.5%) rated 4 or 5 stars.
-* **Concentration Profile:** Portfolio revenue is heavily concentrated in the top five categories, each generating over R$ 1,000,000 and collectively accounting for **R$ 6,204,400.28** (~39.2% of total business revenue).
+Product demand and revenue generation are strongly concentrated within a core set of top-performing categories. The table below outlines the performance of the primary categories across revenue, unit volume (sales volume), and satisfaction levels where available.
 
----
-
-## 2. Best Performing Products and Categories
-
-### Core Revenue & Volume Drivers
-Product categories demonstrate clear divergence between volume drivers and value drivers:
-
-* **Top Revenue Generators:**
-  1. **Health & Beauty:** R$ 1,441,248.07 (9,670 units sold; #2 in volume)
-  2. **Watches & Gifts:** R$ 1,305,541.61 (5,991 units sold)
-  3. **Bed, Bath & Table:** R$ 1,241,681.72 (11,115 units sold; #1 in volume)
-  4. **Sports & Leisure:** R$ 1,156,656.48 (8,641 units sold; #3 in volume)
-  5. **Computers & Accessories:** R$ 1,059,272.40 (7,827 units sold; #5 in volume)
-
-### High Price-Realization Categories
-* **Watches & Gifts:** Generates R$ 1.31M on only 5,991 units sold (an average realization of ~R$ 217.92 per item, significantly above the catalog average price of R$ 120.65).
-* **Computers & Accessories:** Delivers high monetary yield (~R$ 135.34 per unit) alongside high volume (7,827 units).
-
-### Top Satisfaction Categories (Review Rating Benchmark)
-Niche categories exhibit exceptional customer satisfaction:
-* **CDS/DVDs/Musicals:** 4.64
-* **Fashion - Children’s Clothes:** 4.50
-* **Books - General Interest:** 4.45
-* **Construction Tools:** 4.44
-* **Flowers:** 4.42
-* **Books - Imported:** 4.40
+| Category | Sales Volume (Units) | Total Revenue (R$) | Avg. Review Rating |
+| :--- | :---: | :---: | :---: |
+| **health_beauty** | 9,670 | R$ 1,441,248.07 | *N/A (Not in Top/Bottom 10)* |
+| **watches_gifts** | 5,991 | R$ 1,305,541.61 | *N/A* |
+| **bed_bath_table** | 11,115 | R$ 1,241,681.72 | *N/A* |
+| **sports_leisure** | 8,641 | R$ 1,156,656.48 | *N/A* |
+| **computers_accessories** | 7,827 | R$ 1,059,272.40 | *N/A* |
+| **furniture_decor** | 8,334 | R$ 902,511.79 | *N/A* |
+| **housewares** | 6,964 | R$ 778,397.77 | *N/A* |
+| **cool_stuff** | *N/A* | R$ 719,329.95 | *N/A* |
+| **auto** | 4,235 | R$ 685,384.32 | *N/A* |
+| **garden_tools** | 4,347 | R$ 584,219.21 | *N/A* |
+| **telephony** | 4,545 | R$ 394,883.32 | *N/A* |
 
 ---
 
-## 3. Weak Performing Products and Categories
+## 2. Best Performing Products or Categories
 
-### Marginal Revenue Performers
-A long tail of product categories yields negligible commercial impact:
-* **Bottom Categories by Revenue:**
-  * `security_and_services`: R$ 324.51
-  * `fashion_childrens_clothes`: R$ 665.36
-  * `cds_dvds_musicals`: R$ 954.99
-  * `home_comfort_2`: R$ 1,170.58
-  * `flowers`: R$ 1,598.91
-  * `diapers_and_hygiene`: R$ 2,141.27
-  * `arts_and_craftmanship`: R$ 2,184.14
-  * `la_cuisine`: R$ 2,388.54
-  * `fashion_sport`: R$ 2,697.64
-  * `fashio_female_clothing`: R$ 3,425.39
+### Observations
 
-### Sub-Par Customer Satisfaction
-Several categories present poor customer satisfaction ratings (< 3.80):
-* **Security & Services:** 2.50
-* **Unknown Category:** 3.16 (generates R$ 213,662.90 in unclassified sales)
-* **Diapers & Hygiene:** 3.26
-* **Office Furniture:** 3.49 (generates R$ 342,532.65 in revenue)
-* **Home Comfort 2:** 3.63
-* **Fashion - Male Clothing:** 3.64
-* **Fixed Telephony:** 3.68
-* **Fashion - Female Clothing:** 3.75
+* **Top Revenue Drivers:**  
+  * `health_beauty` is the highest revenue-generating category, grossing **R$ 1,441,248.07** across **9,670 units**.
+  * `watches_gifts` ranks second in revenue at **R$ 1,305,541.61** with **5,991 units**, demonstrating a higher revenue yield per unit compared to broader volume leaders.
+  * `bed_bath_table` represents the highest volume category with **11,115 units sold**, generating **R$ 1,241,681.72** in total revenue.
+
+* **High Unit Volume Leaders:**  
+  * The top 5 categories by unit volume are `bed_bath_table` (11,115), `health_beauty` (9,670), `sports_leisure` (8,641), `furniture_decor` (8,334), and `computers_accessories` (7,827).
+
+* **Highest Customer Satisfaction:**  
+  * The top 5 rated categories are `cds_dvds_musicals` (4.64), `fashion_childrens_clothes` (4.50), `books_general_interest` (4.45), `costruction_tools_tools` (4.44), and `flowers` (4.42). 
+  * High ratings are also sustained in `books_imported` (4.40), `books_technical` (4.36), `luggage_accessories` (4.32), `food_drink` (4.31), and `small_appliances_home_oven_and_coffee` (4.30).
+
+---
+
+## 3. Weak Performing Products or Categories
+
+### Observations
+
+* **Lowest Revenue Categories:**  
+  * `security_and_services` produced the lowest overall revenue at **R$ 324.51**.
+  * Other low-revenue categories include `fashion_childrens_clothes` (R$ 665.36), `cds_dvds_musicals` (R$ 954.99), `home_comfort_2` (R$ 1,170.58), and `flowers` (R$ 1,598.91).
+
+* **Lowest Customer Review Ratings:**  
+  * `security_and_services` recorded the lowest satisfaction rating across the platform at **2.50**.
+  * The remaining bottom-rated categories fall significantly below the company benchmark of 4.09:
+    * `Unknown` (unmapped products): **3.16**
+    * `diapers_and_hygiene`: **3.26**
+    * `office_furniture`: **3.49**
+    * `home_comfort_2`: **3.63**
+    * `fashion_male_clothing`: **3.64**
+    * `fixed_telephony`: **3.68**
+    * `fashio_female_clothing`: **3.75**
+    * `party_supplies`: **3.77**
+    * `furniture_mattress_and_upholstery`: **3.82**
+
+* **Uncategorized Data (`Unknown`):**  
+  * Products listed under `Unknown` generated **R$ 213,662.90** in revenue across the platform, but suffer from a low average review score of **3.16**.
 
 ---
 
 ## 4. Product Risks
 
-* **Risk 1: High-Exposure Satisfaction Failure in `Office Furniture`**
-  * *Observation:* `office_furniture` generated R$ 342,532.65 across the period but carries an average review rating of 3.49—one of the lowest across the entire catalog.
-  * *Impact:* Dissatisfaction in a high-value category increases refund requests, buyer churn, and platform distrust.
+* **Revenue Exposure in High-Value Categories with Low Ratings:**  
+  `office_furniture` generated **R$ 342,532.65** in revenue, yet carries a low review score of **3.49**. Customer dissatisfaction in a major revenue-contributing category poses a direct threat to category sustainability and brand sentiment.
 
-* **Risk 2: Governance & Data Quality Gaps (`Unknown` Category)**
-  * *Observation:* Products categorized as `Unknown` generated R$ 213,662.90 in gross sales with a poor customer review score of 3.16.
-  * *Impact:* Indicates untracked inventory, seller compliance failures, or mislabeled catalog items, introducing brand risk and hindering merchandising analytics.
+* **Quality Control & Catalog Governance Risks:**  
+  The `Unknown` product category accounts for **R$ 213,662.90** in sales. The lack of category attribution combined with a poor satisfaction rating (3.16) indicates catalog governance issues that may be impacting buyer experience and post-purchase satisfaction.
 
-* **Risk 3: Tail Catalog Inefficiencies**
-  * *Observation:* Over 10 categories generate less than R$ 4,000 each over a two-year operating window (e.g., `security_and_services` at R$ 324.51; `fashion_childrens_clothes` at R$ 665.36).
-  * *Impact:* Unproductive listing maintenance, catalog clutter, and diluted merchandising focus.
-
-* **Risk 4: Low Ticket Volume Drag in Core Categories**
-  * *Observation:* Category volume leader `bed_bath_table` (11,115 units, R$ 1,241,681.72) yields an average item price of ~R$ 111.71, well below the platform average basket size (AOV R$ 160.58).
-  * *Impact:* Margin erosion if logistics and customer acquisition costs per order are not offset by cross-category basket building.
+* **Underperformance in Soft Lines and Consumables:**  
+  Categories such as `diapers_and_hygiene` (3.26), `fashion_male_clothing` (3.64), and `fashio_female_clothing` (3.75) consistently register ratings below the operational benchmark (4.09), pointing to potential product quality, expectations, or listing discrepancies.
 
 ---
 
 ## 5. Product Growth Opportunities
 
-* **Opportunity 1: Scale High-Satisfaction, Mid-Tier Categories**
-  * *Observation:* Categories such as `luggage_accessories` (R$ 170,875.21; 4.32 rating), `books_general_interest` (R$ 56,052.40; 4.45 rating), and `small_appliances_home_oven_and_coffee` (R$ 50,193.57; 4.30 rating) demonstrate strong customer sentiment.
-  * *Potential:* Increasing assortment and marketing allocation in these segments carries a low customer dissatisfaction risk while unlocking incremental revenue.
+* **Assortment Expansion in High-Satisfaction Niche Categories:**  
+  Categories such as `books_general_interest` (4.45), `costruction_tools_tools` (4.44), `luggage_accessories` (4.32), and `small_appliances_home_oven_and_coffee` (4.30) demonstrate superior customer satisfaction. Expanding product listings within these categories presents an opportunity to capture additional market share with reduced satisfaction risk.
 
-* **Opportunity 2: High-Value Basket Expansion**
-  * *Observation:* `watches_gifts` demonstrates premium price realization (~R$ 217.92 per unit) and strong demand (5,991 units, R$ 1.31M).
-  * *Potential:* Premium gifting bundles and curated showcase placements can lift overall platform average order value.
+* **Optimization of High-Yield Categories:**  
+  `watches_gifts` delivered **R$ 1,305,541.61** across **5,991 units**, indicating an average order unit price significantly above the platform average price of **R$ 120.65**. Prioritizing marketing and vendor acquisition in higher-priced, high-demand verticals can raise overall business Average Order Value (AOV).
 
-* **Opportunity 3: Category Cross-Merchandising**
-  * *Observation:* Total AOV is R$ 160.58 while average product price is R$ 120.65, indicating that cross-selling already occurs but remains modest (average orders per customer sits at 1.03).
-  * *Potential:* Pairing high-frequency volume anchors (`bed_bath_table`, `health_beauty`) with complementary high-margin or premium goods (`housewares`, `small_appliances`) can systematically increase basket size.
+* **Revenue Concentration Strategy:**  
+  The top 5 categories by revenue (`health_beauty`, `watches_gifts`, `bed_bath_table`, `sports_leisure`, `computers_accessories`) generated **R$ 6,204,400.28**, representing over 39% of total business revenue. Protecting and enhancing inventory depth in these five core categories directly stabilizes business cash flow.
 
 ---
 
 ## 6. Product Strategy Recommendations
 
-### Strategic Roadmap
+### Priority Matrix & Strategic Actions
 
-| Horizon | Focus Area | Action Plan | Target KPI Impact |
-| :--- | :--- | :--- | :--- |
-| **Immediate (0–30 Days)** | Catalog Hygiene & Governance | Audit all listings classified under `Unknown` (R$ 213.7k revenue). Enforce strict listing classification rules to eliminate unassigned taxonomy. | Eliminate `Unknown` category; improve category visibility. |
-| **Near-Term (30–90 Days)** | Quality & Supplier Remediation | Conduct a supplier review of `office_furniture` (3.49 rating). Identify whether low scores stem from product defects, assembly complexity, or shipping damage. Delist persistent low-rated SKUs. | Elevate `office_furniture` category rating to > 4.0. |
-| **Near-Term (30–90 Days)** | Portfolio Rationalization | Deprioritize marketing and catalog overhead for bottom 10 categories generating < R$ 4,000 total sales (e.g., `fashion_childrens_clothes`, `security_and_services`). | Reduce catalog maintenance costs; focus resources on core categories. |
-| **Medium-Term (90–180 Days)** | High-Yield Merchandising | Focus customer acquisition and promotional campaigns around the top 5 revenue pillars (`health_beauty`, `watches_gifts`, `sports_leisure`, `bed_bath_table`, `computers_accessories`). Introduce bundled cross-selling between `bed_bath_table` and `furniture_decor`. | Increase Average Order Value above R$ 160.58. |
+```
++-------------------------------------------------------------------+
+|                  RECOMMENDED STRATEGIC ACTIONS                    |
++------------------------------------+------------------------------+
+| HIGH REVENUE / LOW RATING          | HIGH RATING / LOW VOLUME     |
+| Action: Quality Audit & Vendor Review| Action: Catalog & Assortment |
+| Target: office_furniture (3.49)    | Expansion                    |
+|                                    | Target: books, small_appliances|
++------------------------------------+------------------------------+
+| GOVERNANCE DEFICIT                 | PORTFOLIO RATIONALIZATION    |
+| Action: Re-index & Categorize      | Action: Review or Delist     |
+| Target: Unknown Category (3.16)    | Target: security_and_services|
+|                                    | diapers_and_hygiene          |
++------------------------------------+------------------------------+
+```
+
+1. **Audit & Correct Unmapped Inventory (`Unknown` Category):**  
+   * Reclassify all SKUs generating the **R$ 213,662.90** under the `Unknown` label.  
+   * Conduct a review of these products to identify if product quality issues are driving the low rating (**3.16**).
+
+2. **Execute Targeted Quality Assurance on Subpar Revenue Contributors:**  
+   * Initiate a vendor performance review for `office_furniture` (Revenue: **R$ 342,532.65**; Rating: **3.49**).  
+   * Address listing specifications, packaging, or product quality to align category rating with the platform benchmark of **4.09**.
+
+3. **Rationalize Low-Performing Categories:**  
+   * Evaluate the strategic necessity of bottom-tier categories that combine low revenue and poor customer ratings, specifically `security_and_services` (R$ 324.51 revenue; 2.50 rating) and `diapers_and_hygiene` (R$ 2,141.27 revenue; 3.26 rating).  
+   * Consider supplier renegotiation, listing updates, or portfolio delisting for chronic underperformers.
+
+4. **Scale High-Satisfaction Product Lines:**  
+   * Increase marketing focus and merchant acquisition efforts in top-rated categories like `small_appliances_home_oven_and_coffee` (4.30 rating), `luggage_accessories` (4.32 rating), and `books_general_interest` (4.45 rating).
