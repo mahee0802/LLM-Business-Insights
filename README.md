@@ -4,8 +4,17 @@ Turns raw e-commerce data into executive-style business reports. PySpark compute
 
 ## How it works
 
-```
-Raw CSVs -> PySpark merge (order grain) -> KPI summary (JSON) -> grounded prompts -> Gemini -> reports
+```mermaid
+flowchart LR
+    A[Olist CSVs] --> B["PySpark merge (order grain)"]
+    B --> C["Validation: revenue and orders reconcile"]
+    C --> D[KPI summary JSON]
+    D --> E[Grounded prompts]
+    E --> F[Gemini]
+    F --> G[Reports]
+    G --> H[Claim checker]
+    D --> H
+    D --> I[Streamlit dashboard]
 ```
 
 1. `src/spark/joins.py` merges 8 Olist tables, aggregating payments and reviews to one row per order first
@@ -59,7 +68,7 @@ Delayed = delivered on a later calendar day than estimated; the percentage is me
 ## Known limitations / next steps
 
 - Reports in `outputs/` are raw model output. The claim checker flagged 3 arithmetic slips in them (e.g. 98,665 reviews vs 98,673); they are left uncorrected to show what the checker catches.
-- Custom questions can only be answered from the KPI summary; tool calling over the data is planned
+- - Custom questions only use the KPI summary. Planned: retrieval over customer review comments (RAG) to ground "why" explanations, and tool calling for questions the KPIs can't answer.
 - Spark is used for scalability of the design; at 100K rows pandas would also suffice
 - Gemini's free tier (20 requests/day per model) limits live generation, so reports are pre-generated in `outputs/`
 

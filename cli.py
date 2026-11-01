@@ -1,4 +1,5 @@
 from src.utils.summary_loader import load_business_summary
+from src.utils.verify_report import verify_text
 from src.llm.prompts import (
     build_business_report_prompt,
     build_revenue_prompt,
@@ -95,6 +96,10 @@ def main():
         print(report)
 
         save_report(report, filename)
+        total, unsupported = verify_text(report, business_summary)
+        print(f"\nClaim check: {total - len(unsupported)}/{total} numbers traced to KPIs")
+        for snippet in unsupported:
+            print(f"   ? ...{snippet}...")
 
         print("\nReport generated successfully!\n")
 

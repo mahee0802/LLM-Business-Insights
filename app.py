@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 from src.utils.summary_loader import load_business_summary
+from src.utils.verify_report import verify_text
 from src.llm.prompts import (
     build_business_report_prompt,
     build_revenue_prompt,
@@ -145,6 +146,7 @@ if generate:
     try:
         with st.spinner("Generating business insights..."):
             report = generate_business_report(prompt)
+        claims_total, claims_unsupported = verify_text(report, business_summary)
         current_datetime = datetime.now().strftime("%d %B %Y | %I:%M %p")
         metadata = (
             "# Business Analysis Report\n\n"
@@ -155,6 +157,11 @@ if generate:
         report = metadata + report
         save_report(report, filename)
         st.success("Report generated successfully!")
+        st.caption(f"✅ Claim check: {claims_total - len(claims_unsupported)}/{claims_total} numbers traced to KPIs")
+        if claims_unsupported:
+            with st.expander(f"⚠️ {len(claims_unsupported)} numbers to review"):
+                for snippet in claims_unsupported:
+                    st.write(f"…{snippet}…")
         # with st.expander("📄 View Generated Report", expanded=True):
         #     st.markdown(report)
         # st.download_button(label="📥 Download Report",data=report,file_name=filename,mime="text/markdown",
