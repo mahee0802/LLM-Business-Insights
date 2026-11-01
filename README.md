@@ -1,23 +1,26 @@
 # LLM Business Insights
 
-Turns raw e-commerce data into an executive-style business report. Pandas computes verified KPIs, and Gemini turns them into written analysis. Built on the Olist Brazilian e-commerce dataset (~100K orders, 2016-2018).
+Turns raw e-commerce data into executive-style business reports. PySpark computes verified KPIs, and Gemini turns them into written analysis. Built on the Olist Brazilian e-commerce dataset (~100K orders, 2016-2018).
 
 ## How it works
 
 ```
-Raw CSVs -> merge to order-item grain -> KPI summary (JSON) -> prompt builders -> Gemini -> reports
+Raw CSVs -> PySpark merge (order grain) -> KPI summary (JSON) -> grounded prompts -> Gemini -> reports
 ```
 
-1. `src/data/build_business_dataset.py` merges 8 Olist tables into one analysis table
-2. `src/analysis/generate_kpis.py` computes revenue, customer, order, product, payment, review, geography and seller KPIs
-3. `src/llm/prompts.py` builds grounded prompts (currency, data coverage window, partial months)
-4. `src/llm/generate_insights.py` calls Gemini with retry and backoff
-5. `cli.py` (menu) and `app.py` (Streamlit) produce the reports in `outputs/`
+1. `src/spark/joins.py` merges 8 Olist tables, aggregating payments and reviews to one row per order first
+2. `src/spark/transform.py` and `feature_engineering.py` clean data and derive delivery, delay and revenue features
+3. `src/spark/kpis.py` computes revenue, customer, order, product, payment, review, geography and seller KPIs into `data/processed/business_summary.json`
+4. `src/llm/prompts.py` builds prompts that state currency, data coverage and partial months, and forbid unsupported claims
+5. `src/llm/generate_insights.py` calls Gemini with a timeout and retry/backoff
+6. `cli.py` (menu) and `app.py` (Streamlit) generate the reports in `outputs/`
 
 ## Setup
 
+Requires Python 3.10+ and Java 17+ (for PySpark).
+
 ```bash
-pip install pandas python-dotenv google-genai streamlit pytest
+pip install -r requirements.txt
 ```
 
 1. Download the [Olist dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) and put the CSVs in `data/raw/olist_dataset/`
@@ -30,33 +33,36 @@ pip install pandas python-dotenv google-genai streamlit pytest
 ## Run
 
 ```bash
-python -m src.data.build_business_dataset   # build the merged table
-python -m src.analysis.generate_kpis        # compute KPIs -> data/processed/business_summary.json
-python cli.py                               # command-line report generator
-streamlit run app.py                        # web UI
-pytest -v                                   # tests
+python -m src.spark.kpis          # build KPIs -> data/processed/business_summary.json
+python cli.py                     # command-line report generator
+python -m streamlit run app.py    # web dashboard
+pytest -v                         # tests
 ```
 
-## Key results (Olist, Sep 2016 - Aug 2018)
+## Key results (Olist, Oct 2016 - Aug 2018)
 
 - Revenue R$15.84M across 99,441 orders; AOV R$160.58
 - 3.12% repeat purchase rate; SP generates 37% of revenue
-- Average review 4.09; 11.5% of reviews are 1 star
+- Average review 4.09; average delivery 12.5 days; 6.57% of orders delivered late
 
 ## Engineering notes
 
 Bugs found and fixed while validating the pipeline:
 
-- **Join fan-out:** payments and reviews were joined onto item-level rows, inflating revenue from R$15.84M to R$16.64M. Fixed by aggregating payments and reviews to one row per order before joining, and covered by tests.
+- **Join fan-out:** payments and reviews were joined onto item-level rows, inflating revenue from R$15.84M to R$16.64M. Fixed by aggregating both to one row per order before joining, and covered by tests.
 - **Wrong grain for order-level KPIs:** review counts and averages were computed on item rows (112,464 "reviews" vs 99,224 real). They now use one row per order.
-- **LLM misreading data edges:** the model reported a "revenue collapse" in Sep/Oct 2018, which is just where the dataset ends. Prompts now state the currency, the coverage window and the partial months.
+- **LLM misreading data edges:** the model reported a "revenue collapse" in Sep/Oct 2018, which is just where the dataset ends. Prompts now state the currency, the reliable data window and the partial months, and the dashboard chart hides them.
+- **Pandas to PySpark consolidation:** the KPIs were first implemented twice. Before deleting the pandas version I compared both outputs (255 values); they matched except for the delay definition, where Spark counts calendar days.
+
+Delayed = delivered on a later calendar day than estimated; the percentage is measured against all orders.
 
 ## Known limitations / next steps
 
-- A Spark implementation exists in `src/spark/` but is not tested, and the reports use the pandas pipeline
-- LLM output is not yet validated against the KPI JSON (a numeric claim checker is planned)
-- Custom questions can only be answered from the KPI summary; tool calling over the dataset is planned
+- Reports in `outputs/` are raw model output. The claim checker flagged 3 arithmetic slips in them (e.g. 98,665 reviews vs 98,673); they are left uncorrected to show what the checker catches.
+- Custom questions can only be answered from the KPI summary; tool calling over the data is planned
+- Spark is used for scalability of the design; at 100K rows pandas would also suffice
+- Gemini's free tier (20 requests/day per model) limits live generation, so reports are pre-generated in `outputs/`
 
-## Screenshots
+## Screenshot
 
-<add a screenshot of the Streamlit app here>
+![Dashboard](docs/dashboard.png)
