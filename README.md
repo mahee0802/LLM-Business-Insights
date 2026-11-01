@@ -7,8 +7,7 @@ Turns raw e-commerce data into executive-style business reports. PySpark compute
 ```mermaid
 flowchart LR
     A[Olist CSVs] --> B["PySpark merge (order grain)"]
-    B --> C["Validation: revenue and orders reconcile"]
-    C --> D[KPI summary JSON]
+    B --> D[KPI summary JSON]
     D --> E[Grounded prompts]
     E --> F[Gemini]
     F --> G[Reports]
@@ -62,13 +61,14 @@ Bugs found and fixed while validating the pipeline:
 - **Wrong grain for order-level KPIs:** review counts and averages were computed on item rows (112,464 "reviews" vs 99,224 real). They now use one row per order.
 - **LLM misreading data edges:** the model reported a "revenue collapse" in Sep/Oct 2018, which is just where the dataset ends. Prompts now state the currency, the reliable data window and the partial months, and the dashboard chart hides them.
 - **Pandas to PySpark consolidation:** the KPIs were first implemented twice. Before deleting the pandas version I compared both outputs (255 values); they matched except for the delay definition, where Spark counts calendar days.
+- **Claim checker:** extracts every number from a generated report and traces it to the KPI JSON, directly or as a derived share, sum or ratio. About 97% of numbers across the five reports traced, and it caught three arithmetic slips by the model (for example 98,665 reviews where the KPI says 98,673).
 
 Delayed = delivered on a later calendar day than estimated; the percentage is measured against all orders.
 
 ## Known limitations / next steps
 
 - Reports in `outputs/` are raw model output. The claim checker flagged 3 arithmetic slips in them (e.g. 98,665 reviews vs 98,673); they are left uncorrected to show what the checker catches.
-- - Custom questions only use the KPI summary. Planned: retrieval over customer review comments (RAG) to ground "why" explanations, and tool calling for questions the KPIs can't answer.
+- Custom questions only use the KPI summary. Planned: retrieval over customer review comments (RAG) to ground "why" explanations, and tool calling for questions the KPIs can't answer.
 - Spark is used for scalability of the design; at 100K rows pandas would also suffice
 - Gemini's free tier (20 requests/day per model) limits live generation, so reports are pre-generated in `outputs/`
 
