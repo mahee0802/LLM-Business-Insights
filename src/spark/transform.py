@@ -9,7 +9,6 @@ def transform_data(df):
     "order_estimated_delivery_date",
     "review_creation_date",
     "review_answer_timestamp"]
-    print(df.columns)
     for column in date_columns:
         df = df.withColumn(column,try_to_timestamp(col(column)))
     before = df.count()

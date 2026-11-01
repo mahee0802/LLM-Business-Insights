@@ -70,16 +70,3 @@ def load_translation():
         inferSchema=True
     )
     return translation
-def load_all_datasets():
-    return 
-    {
-        "orders": load_orders(),
-        "customers": load_customers(),
-        "order_items": load_order_items(),
-        "products": load_products(),
-        "payments": load_payments(),
-        "reviews": load_reviews(),
-        "sellers": load_sellers(),
-        "geolocation": load_geolocation(),
-        "translation": load_translation()
-    }
